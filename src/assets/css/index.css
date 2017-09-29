@@ -1,0 +1,149 @@
+#index{
+  padding: 0.3rem;
+}
+/*banner*/
+.banner{
+  margin-bottom: 0.5rem;
+}
+.banner .vux-slider > .vux-swiper{
+  border-radius: 0.2rem;
+}
+.banner .vux-slider > .vux-swiper .vux-img{
+  border-radius: 0.2rem;
+}
+/*地域*/
+.area_lf{
+  float: left;
+}
+.area-rt{
+  float: right;
+}
+.area_1{
+  width: 3.3rem;
+  height: 3.6rem;
+}
+.area_lf>.area_1>img,.area-rt>.area_2>img,.area_3>img,.area_4>img{
+  width: 100%;
+  border-radius: 0.2rem;
+}
+.area-rt>.area_2{
+  width: 3.4rem;
+  height: 1.7rem;
+  margin-bottom: 0.20rem;
+}
+.area_3{
+  float: left;
+  width: 1.60rem;
+  height: 1.70rem;
+}
+.area_4{
+  float: right;
+  width: 1.60rem;
+  height: 1.70rem;
+}
+/*头条*/
+.ads{
+  height: 0.6rem;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 15px #F4F4F4;
+  line-height: 0.6rem;
+  margin-top: 0.2rem;
+}
+.ads>img{
+  width: 1.26rem;
+  height: 0.32rem;
+  margin-left: 0.2rem;
+}
+.ads .arrow{
+  float: right;
+  margin-right: 0.3rem;
+}
+.ads .vux-slider{
+  float: right;
+  margin-top: 0.16rem;
+  width: 4.3rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  margin-right: 0.3rem;
+}
+.ads .vux-slider .vux-swiper-item>p>a{
+  display: inline-block;
+  width: 4.3rem;
+  color: #000;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+/*活动页*/
+.activity{
+  margin-top: 0.2rem;
+  height: 1.6rem;
+}
+.activity img{
+  width: 100%;
+}
+/*活动商品*/
+.goods{
+  height: 0.35rem;
+  line-height: 0.35rem;
+  margin-top: 0.6rem;
+}
+.goods_tit{
+  margin-bottom: 0.2rem;
+}
+.goods>.goods_tit>b{
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 0.12rem;
+  height: 0.35rem;
+  background-color: rgba(39, 218, 188, 1);
+  border-radius: 0 0.08rem 0.06rem 0.06rem;
+  margin-right: 0.2rem;
+}
+.goods>.goods_tit>.activities{
+  font-size:0.36rem;
+  letter-spacing: 2px;
+}
+.goods>.goods_tit>.pro_more{
+  float: right;
+}
+.goods>.goods_tit>.pro_more>a{
+  color: #666666;
+  font-size: 0.26rem;
+  letter-spacing: 1px;
+}
+.box1 {
+  height: 5rem;
+  position: relative;
+  width: 18.8rem;
+}
+.box1-item {
+  width: 3rem;
+  height: 4.2rem;
+  display:inline-block;
+  margin-left: 0.15rem;
+  float: left;
+}
+.box1-item:first-child {
+  margin-left: 0;
+}
+.box1-item img{
+  width: 100%;
+}
+.sub-price,.sub-title{
+  margin-top: 0.1rem;
+  font-size:0.28rem;
+}
+.sub-price{
+  color: #ff3333;
+}
+/*精选专题*/
+.theme>li{
+  margin-bottom: 0.4rem;
+  box-shadow: 0 0 15px #C1C1C1;
+  border-radius: 0.2rem;
+}
+.theme>li>img{
+  width: 100%;
+  border-radius: 0.2rem;
+}

@@ -1,19 +1,24 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router'
-import App from '../App'
-import Home from '../components/HelloFromVux'
-import Home2 from '../components/Hello'
 import MyOrder from '../components/MyOrder.vue'
 import OrderDetail from '../components/OrderDetail.vue'
-Vue.use(VueRouter)
+
+
+
+
+
+import more_goods from '../components/more_goods.vue'
+import index from '../components/index.vue'
+import area from '../components/area.vue'
+Vue.use(VueRouter);
 
 
 
 const routes = [
-  { path: '/', component: App},
-  {path: '/h1', component: Home},
-  {path: '/h2',component: Home2},
+  { path: '/', component: index},
+  {path: '/more_goods', component: more_goods},
+  {path: '/area',component: area},
   {path: '/MyOrder', component: MyOrder,
     // children: [
     //   {path: 'detail',component: OrderDetail},
@@ -25,7 +30,7 @@ const routes = [
 
 
 
-]
+];
 
 
 const router = new VueRouter({

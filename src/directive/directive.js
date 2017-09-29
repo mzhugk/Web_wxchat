@@ -6,4 +6,4 @@ Vue.directive('title', {
   unbind:function () {
     document.title = '汇聚全球';
   }
-})
+});

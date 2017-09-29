@@ -1,0 +1,26 @@
+#more_goods{
+	 padding: 0.3rem;
+}
+.good{
+	width: 48%;
+	float: left;
+	margin-bottom: 0.2rem;
+	font-size: 0.26rem;
+}
+.good:nth-child(even){
+	float: right;
+}
+.good>img{
+	width: 100%;
+}
+.good>p{
+	margin-top: 0.1rem;
+}
+.pro_title{
+	font-size: 0.26rem;
+	line-height: 1.5;
+}
+.price{
+	color: red;
+	font-size: 0.28rem;
+}

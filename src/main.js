@@ -1,18 +1,22 @@
 
 import Vue from 'vue'
-import FastClick from 'fastclick'
-import App from './App'
-import router from './router/router'
-import Flexible from './assets/js/flexible'
-import  normalize from './assets/css/normalize.css'
 import Vuex from 'vuex'
+import "./assets/css/normalize.css"
+import FastClick from 'fastclick'
+import Axios from 'axios'
 import store from './store/store'
+import App from './App.vue'
+import router from './router/router'
 import directive from './directive/directive'
-Vue.use(Vuex)
+Vue.use(Vuex);
 
-FastClick.attach(document.body)
 
-Vue.config.productionTip = false
+
+Vue.prototype.$ajax = Axios;
+
+FastClick.attach(document.body);
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({

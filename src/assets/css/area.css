@@ -1,0 +1,30 @@
+#china{
+	background-color: #F2F2F2;
+}
+.img_title>img{
+	width: 100%;
+}
+.left{
+	float: left;
+	width: 5.0rem;
+	background-color: #fff;
+}
+.right{
+	float: right;
+	width: 2.5rem;
+	background-color: #fff;
+}
+.left_1,.left_2{
+	height: 2.0rem;
+}
+.left_1{
+	border-bottom: 1px solid #F2F2F2;
+}
+.left_1>.img,.left_2>.img{
+	width: 1.8rem;
+	height: 1.8rem;
+	padding:0.1rem;
+}
+.left_1 img,.left_2 img{
+	width: 100%;
+}
