@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4399da6a-da34-4d5c-b220-9db3c20def71" name="默认的" comment="第一次提交">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/css/area_more.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/css/column.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/area_more.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/column.vue" />
+    <list default="true" id="4399da6a-da34-4d5c-b220-9db3c20def71" name="默认的" comment="产地鲸选，活动商品，商品列表，专栏推荐">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/area.css" afterPath="$PROJECT_DIR$/src/assets/css/area.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/index.css" afterPath="$PROJECT_DIR$/src/assets/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/more_goods.css" afterPath="$PROJECT_DIR$/src/assets/css/more_goods.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/area.vue" afterPath="$PROJECT_DIR$/src/components/area.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index.vue" afterPath="$PROJECT_DIR$/src/components/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/more_goods.vue" afterPath="$PROJECT_DIR$/src/components/more_goods.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router.js" afterPath="$PROJECT_DIR$/src/router/router.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -500,7 +488,7 @@
       <workItem from="1507543646088" duration="566000" />
       <workItem from="1507596958044" duration="2965000" />
       <workItem from="1507683534266" duration="30691000" />
-      <workItem from="1507770238204" duration="15133000" />
+      <workItem from="1507770238204" duration="15440000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1506585913184</created>
@@ -586,11 +574,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507540239706</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="产地鲸选，活动商品，商品列表，专栏推荐">
+      <created>1507791394959</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1507791394959</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185503000" />
+    <option name="totallyTimeSpent" value="185810000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -688,7 +683,8 @@
     </ignored-roots>
     <MESSAGE value="默认的" />
     <MESSAGE value="第一次提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="第一次提交" />
+    <MESSAGE value="产地鲸选，活动商品，商品列表，专栏推荐" />
+    <option name="LAST_COMMIT_MESSAGE" value="产地鲸选，活动商品，商品列表，专栏推荐" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
