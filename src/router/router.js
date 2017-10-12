@@ -11,14 +11,19 @@ import OrderDetail from '../components/OrderDetail.vue'
 import more_goods from '../components/more_goods.vue'
 import index from '../components/index.vue'
 import area from '../components/area.vue'
+import area_more from '../components/area_more.vue'
+import column from '../components/column.vue'
 Vue.use(VueRouter);
 
 
 
 const routes = [
-  { path: '/', component: index},
+  { path: '/', component: index,meta: {keepAlive: true}},
   {path: '/more_goods', component: more_goods},
-  {path: '/area',component: area},
+  {path: '/area_goods', component: more_goods},
+  {path: '/area',component: area,meta: {keepAlive: false}},
+  {path: '/area_more',component: area_more},
+  {path: '/column',component: column},
   {path: '/MyOrder', component: MyOrder,
     // children: [
     //   {path: 'detail',component: OrderDetail},

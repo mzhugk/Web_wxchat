@@ -1,11 +1,14 @@
-#more_goods{
+.more_goods{
 	 padding: 0.3rem;
+	 background-color: #fff;
 }
 .good{
 	width: 48%;
 	float: left;
 	margin-bottom: 0.2rem;
 	font-size: 0.26rem;
+	padding-bottom: 0.2rem;
+	border-bottom: 0.01rem solid #e6e6e6;
 }
 .good:nth-child(even){
 	float: right;
@@ -16,11 +19,15 @@
 .good>p{
 	margin-top: 0.1rem;
 }
-.pro_title{
+.good .pro_title{
 	font-size: 0.26rem;
 	line-height: 1.5;
+	overflow: hidden;
+	height: 0.8rem;
+	text-align: center;
 }
-.price{
+.good .price{
 	color: red;
+	text-align: center;
 	font-size: 0.28rem;
 }

@@ -1,0 +1,26 @@
+#column{
+	background-color: #F2F2F2;
+	padding-bottom: 0.6rem;
+}
+.column_title img{
+	width: 100%;
+}
+.column_text{
+	background-color: #fff;
+	overflow: hidden;
+	margin-bottom: 0.2rem;
+}
+.column_text .top{
+	text-align: center;
+	font-size: 0.36rem;
+	color: #333;
+	margin:0.4rem 0;
+}
+.column_text .intro{
+	width: 7.0rem;
+	margin: 0 auto 0.5rem;
+	font-size: 0.26rem;
+	color: #333;
+	line-height: 1.5;
+	text-indent: 0.5rem;
+}

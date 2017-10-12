@@ -134,6 +134,10 @@
   margin-top: 0.1rem;
   font-size:0.28rem;
 }
+.sub-title{
+  overflow: hidden;
+  height: 0.68rem;
+}
 .sub-price{
   color: #ff3333;
 }
@@ -143,7 +147,7 @@
   box-shadow: 0 0 15px #C1C1C1;
   border-radius: 0.2rem;
 }
-.theme>li>img{
+.theme>li>a>img{
   width: 100%;
   border-radius: 0.2rem;
 }

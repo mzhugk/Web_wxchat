@@ -1,5 +1,5 @@
 <template>
-  <div id="index" v-title data-title="汇聚全球">
+  <div id="index" v-title :data-title="title">
       <div>
         <!--首页轮播-->
           <div class="banner">
@@ -8,15 +8,16 @@
         <!--地域-->
           <div class="area">
               <div class="area_lf">
-                  <p class="area_1"><img :src="area[0].image"  ref="area_1" @click="go(area[0].class_id)"></p>
+                  <p class="area_1"><img :src="area[0].image"   @click="go(area[0].class_id,'area')"></p>
               </div>
               <div class="area-rt">
                   <div class="area_2">
-                   <img :src="area[1].image" ref="area_2" @click="go(area[1].class_id)">
+                   <img :src="area[1].image"  @click="go(area[1].class_id,'area')">
                   </div>
                   <div>
-                    <p class="area_3"><img :src="area[2].image" ref="area_3"></p>
-                    <p class="area_4"><img :src="area[3].image" ref="area_4"></p>
+                    <p class="area_3"><img :src="area[2].image"  @click="go(area[2].class_id,'area')"></p>
+                    <router-link to="area_more"><p class="area_4"><img :src="area[3].image"></p></router-link>
+
                   </div>
             </div>
         </div>
@@ -57,7 +58,7 @@
               <span class="activities">精选专题</span>
             </div>
             <ul class="theme">
-              <li v-for="i in subject"><img :src="i.img" alt=""></li>
+              <li v-for="i in subject"><router-link :to="{ path: 'column', query: { plan:i.theme_id }}"><img :src="i.img" alt=""></router-link></li>
             </ul>
         </div>
         <!--测试-->
@@ -84,11 +85,12 @@ export default({
   components: {
     Swiper, SwiperItem, Scroller,Loading,Toast
   },
-  activated () {
-    this.$refs.scroller.reset()
-  },
+//  activated () {
+//    this.$refs.scroller.reset()
+//  },
   data () {
     return {
+      title:"汇聚全球",
       baseList: [],
       area: [],
       headline: [],
@@ -124,59 +126,59 @@ export default({
   },
   methods: {
     //第一次加载的时候容易为空true
-    getNewsList (isEmpty) {
-      let that = this;
-      this.showloading = true;
-      this.$ajax({
-        url: "http://huijuquanqiu.vip/api/index/theme?PageIndex=" + that.PageIndex + "&PageSize=" + that.PageSize,
-        method: "get"
-      })
-        .then(function (res) {
-          // sucess callback
-          if (res.data.code == 100000) {
-            let data = res.data.object[0].data;
-            if (isEmpty) {
-              that.lists = [];
-            } else {
-              //isEmpty为false时，也就是向上滚动刷新selPullUp ()方法被被调用的时候
-              if (data === null) {
-                that.showloading = false;
-                that.toastshow = true;
-                that.scrollerStatus.pullupStatus = "disabled"; // 禁用下拉
-                return
-              }
-            }
-            for (let i = 0; i < data.length; i++) {
-              that.lists.push(data[i].img);
-            }
-            that.isShow = true;
-            that.showloading = false;
-            if (!isEmpty && data) {
-              that.scrollerStatus.pullupStatus = "default";
-              that.$nextTick(() => {
-                that.$refs.scroller.reset()
-              })
-            }
-          }
-        }).catch(function (err) {
-        // error callback
-        that.isShow = false;
-      })
-    },
-    selPullUp () {
-      this.PageIndex++;
-      this.getNewsList();
-    },
-    go(params){
-      this.$router.push({path: 'area', query: {plan: params}});
+//    getNewsList (isEmpty) {
+//      let that = this;
+//      this.showloading = true;
+//      this.$ajax({
+//        url: "http://huijuquanqiu.vip/api/index/theme?PageIndex=" + that.PageIndex + "&PageSize=" + that.PageSize,
+//        method: "get"
+//      })
+//        .then(function (res) {
+//          // sucess callback
+//          if (res.data.code == 100000) {
+//            let data = res.data.object[0].data;
+//            if (isEmpty) {
+//              that.lists = [];
+//            } else {
+//              //isEmpty为false时，也就是向上滚动刷新selPullUp ()方法被被调用的时候
+//              if (data === null) {
+//                that.showloading = false;
+//                that.toastshow = true;
+//                that.scrollerStatus.pullupStatus = "disabled"; // 禁用下拉
+//                return
+//              }
+//            }
+//            for (let i = 0; i < data.length; i++) {
+//              that.lists.push(data[i].img);
+//            }
+//            that.isShow = true;
+//            that.showloading = false;
+//            if (!isEmpty && data) {
+//              that.scrollerStatus.pullupStatus = "default";
+//              that.$nextTick(() => {
+//                that.$refs.scroller.reset()
+//              })
+//            }
+//          }
+//        }).catch(function (err) {
+//        // error callback
+//        that.isShow = false;
+//      })
+//    },
+//    selPullUp () {
+//      this.PageIndex++;
+//      this.getNewsList();
+//    },
+    go(params,area){//路由跳转
+      this.$router.push({path: area, query: {plan: params}});
     },
   },
   mounted:function () {
     //分页第一次加载
-    this.getNewsList(true);
-    this.$nextTick(() => {
-      this.$refs.scroller.reset();
-    });
+//    this.getNewsList(true);
+//    this.$nextTick(() => {
+//      this.$refs.scroller.reset();
+//    });
       //   第一部分接口
       let that=this;
       this.$ajax({

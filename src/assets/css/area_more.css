@@ -1,0 +1,12 @@
+.area_box{
+	float: left;
+	margin-left: 0.3rem;
+	margin-top: 0.3rem;
+	width: 3.3rem;
+	height: 2.8rem;
+	border-radius: 0.2rem;
+}
+.area_box img{
+	width: 100%;
+	border-radius: 0.2rem;
+}
