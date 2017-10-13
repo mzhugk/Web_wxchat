@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <!-- 这里是需要keepalive的 -->
-    <keep-alive>
-      <router-view v-if="$route.meta.keepAlive"></router-view>
+    <keep-alive :exclude="['orderDetail']">
+    <router-view></router-view>
     </keep-alive>
-
-    <!-- 这里不会被keepalive -->
-    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
@@ -16,3 +12,15 @@ export default {
 }
 </script>
 
+<style lang="less">
+@import '~vux/src/styles/reset.less';
+
+body {
+  background-color: #fbf9fe;
+}
+html,body,#app{
+    width: 100%;
+    height: 100%;
+  }
+
+</style>

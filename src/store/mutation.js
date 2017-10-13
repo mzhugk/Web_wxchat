@@ -13,3 +13,8 @@ export const COMM_TOKEN = 'COMM_TOKEN';
 * */
 
 export const ORDER_NUM = 'ORDER_NUM';
+/*
+*
+* 地址
+* */
+export const ADDRESS_DATA = 'ADDRESS_DATA';

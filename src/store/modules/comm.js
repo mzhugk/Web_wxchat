@@ -1,11 +1,4 @@
-/**
- * Created by linhaifeng on 2016/11/15.
- */
 
-/*
-* 文章内容
-*
-* */
 import api from '../../api/api'
 import * as types from '../mutation';
 
@@ -18,9 +11,11 @@ const actions =  {
   gettoken({commit}){
     // "use strict";
     api.gettoken(function (res) {
+
       if(res.status==200){
         let token=res.data.token_secret;
-      commit(types.COMM_TOKEN,token)
+        sessionStorage.setItem('token',token)
+        commit(types.COMM_TOKEN,token);
       }
     })
   },

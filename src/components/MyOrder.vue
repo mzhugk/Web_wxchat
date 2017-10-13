@@ -1,5 +1,5 @@
 <template>
-  <div id="my-order" v-title data-title="我的订单">
+  <div class="my-order" v-title data-title="我的订单">
 
     <tab style="height: 5.3%;" :line-width=3 active-color='#27dabc' v-model="tabIndex" custom-bar-width="40px">
       <tab-item style="display: flex;align-items: center;justify-content: center" v-for="(item,index) in tabData":key='index' @on-item-click="tabClick(index)">{{item}}</tab-item>
@@ -14,7 +14,7 @@
 
         <div style="height: 0.3rem" v-if="!listIsNull"></div>
         <div v-if="listIsNull" >
-        ssss
+        无
         </div>
       </div>
 
@@ -60,7 +60,14 @@
 
     },
     computed:{
-      token(){return this.$store.getters.token},
+      token(){
+        const that=this;
+
+        if(that.$store.getters.token){return this.$store.getters.token}
+        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
+        else {alert('token_error')};
+
+      },
     },
     methods:{
       tabClick:function (type) {
@@ -128,7 +135,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  #my-order{
+  .my-order{
     width: 100%;
     height: 100%;
     background-color: rgba(242, 242, 242, 1);

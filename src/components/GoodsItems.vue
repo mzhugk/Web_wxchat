@@ -3,11 +3,11 @@
     <div style="width: 90%;height: 100%;margin: auto;position: relative;">
     <div class="item-header clear">
       <div class="lf full-height centerHei" style="font-size: 0.32rem;color:#666666;">{{itemData.shop_name}}</div>
-      <div class="rt full-height centerHei" style="font-size: 0.28rem;color: #27dabc;">{{itemData.pay_status}}</div>
+      <div class="rt full-height centerHei" style="font-size: 0.28rem;color:#27dabc;">{{itemData.pay_status}}</div>
     </div>
     <div class="item-body" @click="itemDetail">
 
-      <img  :src="itemData.product_logo" alt="" >
+      <img :src="itemData.product_logo" alt="">
 
       <div class="item-body-title">{{itemData.product_title}}</div>
       <div class="item-body-price">¥{{itemData.price}}×{{itemData.total}}</div>
@@ -40,11 +40,11 @@
     },
     methods:{
       test:function () {
-        console.log(this.itemData)
+//        console.log(this.itemData)
       },
       itemDetail:function () {
         this.$store.commit('ORDER_NUM',this.itemData.orderno);
-        this.$router.push('/MyOrder/detail');
+        this.$router.push('/MyOrder/detail/'+this.itemData.orderno);
       }
     }
   }

@@ -25,9 +25,17 @@ export  default {
   },
 
   getorderdetail:function (token,order,cb) {
-    axios.post('http://www.huijuquanqiu.vip/api/Order/orderdetail',qs.stringify({
+    axios.post('http://www.huijuquanqiu.vip/api/Orderv2/orderdetail',qs.stringify({
       'token_secret':token, 'orderno':order,'from':'wx'})).then(function (res) {
+      cb(res)
+    });
+  },
+  getAddressData:function (token,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/User/addresslist',qs.stringify({
+      'token_secret':token,'from':'wx'})).then(function (res) {
+
       cb(res)
     });
   }
 }
+
