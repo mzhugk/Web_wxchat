@@ -1,5 +1,5 @@
 <template>
-  <div id="column" v-title :data-title="title">
+  <div id="column" >
       <div class="column_title"><img :src="obj.img"></div>
       <div class="column_text">
           <p class="top"><span>{{obj.title}}</span></p>
@@ -12,12 +12,12 @@
 <script>
   import more_goods from "./more_goods.vue"
   export default {
+    name:"column",
     components: {
       more_goods
     },
     data(){
         return {
-          title:"专栏推荐",
           obj:[]
         }
     },
@@ -36,6 +36,7 @@
               function (res) {
                 if(res.data.code==100000){
                   that.obj=res.data.object[0].data;
+//                  console.log(that.obj.product)
                 }
               }
           ).catch(
@@ -46,7 +47,7 @@
         }
 
     },
-    mounted:function () {
+    created:function () {
       this.getcolumn();
     }
   }

@@ -1,14 +1,38 @@
 #index{
   padding: 0.3rem;
 }
+/*悬浮条个人中心和购物车*/
+.suspend{
+  position: fixed;
+  bottom: 40%;
+  left: 0;
+  width: 1.8rem;
+  height: 0.8rem;
+  background-color: rgba(51, 51, 51, 0.7);
+  border-radius: 0px 0.1rem 0.1rem 0px;
+  z-index: 10000;
+}
+.suspend>p{
+  width: 49%;
+  height: 60%;
+  float: left;
+  margin-top: 0.16rem;
+}
+.personal{
+  background: url("../img/personal_center.png") center center/40% no-repeat;
+  border-right: 0.01rem solid #fff;
+}
+.w_cart{
+  background: url(../img/w_cart.png) center center/50% no-repeat;
+}
 /*banner*/
-.banner{
+#index .banner{
   margin-bottom: 0.5rem;
 }
-.banner .vux-slider > .vux-swiper{
+#index .banner .vux-slider > .vux-swiper{
   border-radius: 0.2rem;
 }
-.banner .vux-slider > .vux-swiper .vux-img{
+#index .banner .vux-slider > .vux-swiper .vux-img{
   border-radius: 0.2rem;
 }
 /*地域**/
@@ -124,6 +148,9 @@
   margin-left: 0.15rem;
   float: left;
 }
+.box1-item>a{
+  display: block;
+}
 .box1-item:first-child {
   margin-left: 0;
 }
@@ -137,6 +164,7 @@
 .sub-title{
   overflow: hidden;
   height: 0.68rem;
+  color: #333;
 }
 .sub-price{
   color: #ff3333;

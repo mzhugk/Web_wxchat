@@ -1,26 +1,27 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router'
-import App from '../App'
 import more_goods from '../components/more_goods.vue'
 import index from '../components/index.vue'
 import area from '../components/area.vue'
 import area_more from '../components/area_more.vue'
 import column from '../components/column.vue'
+import goods_detail from '../components/goods_detail.vue'
 
 import MyOrder from '../components/MyOrder.vue'
 import OrderDetail from '../components/OrderDetail.vue'
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 
 
 const routes = [
-  { path: '/', component: App},
+  { path: '/', component: index},
   {path: '/more_goods', component: more_goods},
   {path: '/area_goods', component: more_goods},
-  {path: '/area',component: area,meta: {keepAlive: false}},
+  {path: '/area',component: area},
   {path: '/area_more',component: area_more},
   {path: '/column',component: column},
+  {path: '/goods_detail',component: goods_detail},
   {path: '/MyOrder', component: MyOrder,
     // children: [
     //   {path: 'detail',component: OrderDetail},
@@ -32,7 +33,7 @@ const routes = [
 
 
 
-]
+];
 
 
 const router = new VueRouter({

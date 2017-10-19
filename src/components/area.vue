@@ -3,38 +3,50 @@
       <div class="img_title"><img :src="img_title"></div>
       <div class="list">
           <div class="left">
-              <div class="left_1">
-                <div class="img"><img :src="list[0].product_logo" alt=""></div>
-                <div class="text">
-                  <p>{{list[0].product_title}}</p>
-                  <div>¥<span> {{list[0].price}}</span></div>
+
+                <div class="left_1">
+                  <router-link :to="{ path: 'goods_detail', query: { plan:list[0].pro_id }}">
+                    <div class="img"><img :src="list[0].product_logo" alt=""></div>
+                    <div class="text">
+                      <p>{{list[0].product_title}}</p>
+                      <div>¥<span> {{list[0].price}}</span></div>
+                    </div>
+                  </router-link>
                 </div>
-              </div>
-              <div class="left_2">
-                <div class="img"><img :src="list[1].product_logo" alt=""></div>
-                <div class="text">
-                  <p>{{list[1].product_title}}</p>
-                  <div>¥<span> {{list[1].price}}</span></div>
+
+
+                <div class="left_2">
+                  <router-link :to="{ path: 'goods_detail', query: { plan:list[1].pro_id }}">
+                    <div class="img"><img :src="list[1].product_logo" alt=""></div>
+                    <div class="text">
+                      <p>{{list[1].product_title}}</p>
+                      <div>¥<span> {{list[1].price}}</span></div>
+                    </div>
+                  </router-link>
                 </div>
-              </div>
+
           </div>
           <div class="right">
-            <div class="img"><img :src="list[2].product_logo" alt=""></div>
-            <div class="r_text">
-              <p>{{list[2].product_title}}</p>
-              <div>¥<span> {{list[2].price}}</span></div>
-            </div>
+            <router-link :to="{ path: 'goods_detail', query: { plan:list[2].pro_id }}">
+              <div class="img"><img :src="list[2].product_logo" alt=""></div>
+              <div class="r_text">
+                <p>{{list[2].product_title}}</p>
+                <div>¥<span> {{list[2].price}}</span></div>
+              </div>
+            </router-link>
           </div>
       </div>
       <div class="list_bottom">
         <ul>
           <li class="left_1" v-for="i in list_bottom">
-              <div class="img"><img :src="i.product_logo" alt=""></div>
-              <div class="text">
-                <p>{{i.product_title}}</p>
-                <div class="sku">{{i.spec_name}}</div>
-                <div class="price">¥ {{i.price}}</div>
-              </div>
+              <router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">
+                  <div class="img"><img :src="i.product_logo" alt=""></div>
+                  <div class="text">
+                    <p>{{i.product_title}}</p>
+                    <div class="sku">{{i.spec_name}}</div>
+                    <div class="price">¥ {{i.price}}</div>
+                  </div>
+              </router-link>
           </li>
         </ul>
       </div>
@@ -80,7 +92,7 @@
         }
 
     },
-    mounted:function () {
+    created:function () {
       this.getarea();
     }
   }

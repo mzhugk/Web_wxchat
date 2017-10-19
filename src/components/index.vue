@@ -1,6 +1,11 @@
 <template>
   <div id="index" v-title :data-title="title">
       <div>
+        <!--页面的悬浮条：个人中心和购物车-->
+        <div class="suspend">
+            <p class="personal"></p>
+            <p class="w_cart"></p>
+        </div>
         <!--首页轮播-->
           <div class="banner">
               <swiper :list="baseList" auto loop :aspect-ratio="375/750" :show-dots="false" :show-desc-mask="false" ></swiper>
@@ -43,9 +48,11 @@
             <scroller lock-y :scrollbar-x=false>
               <div class="box1">
                 <div class="box1-item" v-for="i in goods">
-                  <img :src="i.product_logo" alt="">
-                  <p class="sub-title">{{i.product_title}}</p>
-                  <p class="sub-price">¥ {{i.price}}</p>
+                  <router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">
+                    <img :src="i.product_logo" alt="">
+                    <p class="sub-title">{{i.product_title}}</p>
+                    <p class="sub-price">¥ {{i.price}}</p>
+                  </router-link>
                 </div>
               </div>
             </scroller>
@@ -82,6 +89,7 @@
 <script>
   import { Swiper,SwiperItem,Scroller,Loading,Toast} from 'vux'
 export default({
+  name:"index",
   components: {
     Swiper, SwiperItem, Scroller,Loading,Toast
   },
@@ -91,12 +99,12 @@ export default({
   data () {
     return {
       title:"汇聚全球",
-      baseList: [],
-      area: [],
-      headline: [],
-      activity: [],
-      goods: [],
-      subject: [],
+      baseList: [],//首页轮播图数据
+      area: [],//首页地域分类
+      headline: [],//首页汇聚头条
+      activity: [],//活动H5广告
+      goods: [],//首页活动商品滑动区域
+      subject: [],//专题的数据
       //分页加载
       type: "1",
       PageIndex: 0,//页码从第一页开始
@@ -173,7 +181,7 @@ export default({
       this.$router.push({path: area, query: {plan: params}});
     },
   },
-  mounted:function () {
+  created:function () {
     //分页第一次加载
 //    this.getNewsList(true);
 //    this.$nextTick(() => {
