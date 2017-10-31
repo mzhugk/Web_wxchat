@@ -446,7 +446,7 @@
       <workItem from="1508893015708" duration="19970000" />
       <workItem from="1508979292736" duration="22249000" />
       <workItem from="1509065205034" duration="14106000" />
-      <workItem from="1509410555286" duration="7607000" />
+      <workItem from="1509410555286" duration="7652000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1506585913184</created>
@@ -560,11 +560,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509428453728</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="2017.10.31">
+      <created>1509428479711</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1509428479711</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="435521000" />
+    <option name="totallyTimeSpent" value="435566000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -666,7 +673,8 @@
     <MESSAGE value="第一次提交" />
     <MESSAGE value="产地鲸选，活动商品，商品列表，专栏推荐" />
     <MESSAGE value="2017.10.19 基本完成页面所有展示内容" />
-    <option name="LAST_COMMIT_MESSAGE" value="2017.10.19 基本完成页面所有展示内容" />
+    <MESSAGE value="2017.10.31" />
+    <option name="LAST_COMMIT_MESSAGE" value="2017.10.31" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
