@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4399da6a-da34-4d5c-b220-9db3c20def71" name="默认的" comment="2017.10.19 基本完成页面所有展示内容">
+    <list default="true" id="4399da6a-da34-4d5c-b220-9db3c20def71" name="默认的" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/webpack.base.conf.js" afterPath="$PROJECT_DIR$/build/webpack.base.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/index.js" afterPath="$PROJECT_DIR$/config/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/area.css" afterPath="$PROJECT_DIR$/src/assets/css/area.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/column.css" afterPath="$PROJECT_DIR$/src/assets/css/column.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/goods_detail.css" afterPath="$PROJECT_DIR$/src/assets/css/goods_detail.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/index.css" afterPath="$PROJECT_DIR$/src/assets/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/more_goods.css" afterPath="$PROJECT_DIR$/src/assets/css/more_goods.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/area.vue" afterPath="$PROJECT_DIR$/src/components/area.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/column.vue" afterPath="$PROJECT_DIR$/src/components/column.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/goods_detail.vue" afterPath="$PROJECT_DIR$/src/components/goods_detail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index.vue" afterPath="$PROJECT_DIR$/src/components/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/more_goods.vue" afterPath="$PROJECT_DIR$/src/components/more_goods.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -461,7 +446,7 @@
       <workItem from="1508893015708" duration="19970000" />
       <workItem from="1508979292736" duration="22249000" />
       <workItem from="1509065205034" duration="14106000" />
-      <workItem from="1509410555286" duration="7595000" />
+      <workItem from="1509410555286" duration="7607000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1506585913184</created>
@@ -568,11 +553,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508381846813</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="2017.10.19 基本完成页面所有展示内容">
+      <created>1509428453728</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1509428453728</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="435509000" />
+    <option name="totallyTimeSpent" value="435521000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
