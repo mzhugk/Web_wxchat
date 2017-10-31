@@ -224,3 +224,10 @@
 .buy_now{
 	background-color: #27DABC;
 }
+/*Toast 默认样式修改*/
+#goods_detail .weui-toast.vux-toast-bottom{
+	bottom: 1rem;
+}
+#goods_detail .weui-toast{
+	border-radius: 1.0rem;
+}

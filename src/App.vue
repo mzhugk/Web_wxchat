@@ -14,9 +14,9 @@ export default {
 
 <style lang="less">
 
-body {
-  background-color: #fbf9fe;
-}
+/*body {*/
+  /*background-color: #fbf9fe;*/
+/*}*/
 html,body,#app{
     width: 100%;
     height: 100%;

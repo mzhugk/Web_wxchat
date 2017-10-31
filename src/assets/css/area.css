@@ -1,6 +1,7 @@
 #china{
 	background-color: #F2F2F2;
-	padding-bottom: 0.6rem;
+	/*padding-bottom: 0.6rem;*/
+	height: 100%;
 }
 .img_title img{
 	width: 100%;
