@@ -5,8 +5,17 @@
       <tab-item style="display: flex;align-items: center;justify-content: center" v-for="(item,index) in tabData":key='index' @on-item-click="tabClick(index)">{{item}}</tab-item>
     </tab>
 
-    <scroller lock-x scrollbar-y height="94.7%"   @on-scroll-bottom="onListBottom" ref="listBottom" :scroll-bottom-offst="200">
-      <div  >
+    <scroller lock-x scrollbar-y height="94.7%"   @on-scroll-bottom="onListBottom" ref="listBottom" :scroll-bottom-offst="900">
+      <div>
+        <!--<div style="">-->
+        <!--<div style="background-color: yellow;height: 3rem"></div>-->
+        <!--<div style="background-color: saddlebrown;height: 6rem"></div>-->
+        <!--<div style="background-color: aquamarine;height: 8rem"></div>-->
+        <!--<div style="background-color: red;height: 2rem"></div>-->
+        <!--</div>-->
+        <!--<div v-for="i in 6" style="background-color: seagreen;">{{i}}</div>-->
+
+
       <goods-items v-for="(item,index) in orderData":key="index" :itemData.sync="item" v-if="!listIsNull">
 
       </goods-items>
@@ -17,6 +26,7 @@
         无
         </div>
       </div>
+
 
     </scroller>
   </div>
@@ -62,7 +72,6 @@
     computed:{
       token(){
         const that=this;
-
         if(that.$store.getters.token){return this.$store.getters.token}
         else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
         else {alert('token_error')};

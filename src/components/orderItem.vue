@@ -1,4 +1,5 @@
 <template>
+
   <div class="orderItem" v-if="orderb.shop">
     <div class="item_con_box">
     <div class="shop_name">{{orderb.shop.shop_name}}</div>
@@ -16,22 +17,6 @@
     </div>
     </div>
     <div style="height: 0.2rem;"></div>
-    <div class="total_price_box" >
-      <div class="fee_box" >
-        <span class="lf">运费:</span>
-        <span class="rt">¥{{orderb.fee}}</span>
-      </div>
-      <div class="total_price" >
-        <span class="lf">合计:</span>
-        <span class="rt">¥{{orderb.total_price}}</span>
-        </div>
-    </div>
-    <div style="height: 0.2rem;"></div>
-    <div class="orderno_box">
-      <div class="order_con">订单号:{{orderb.orderno}}</div>
-      <div class="order_con">下单时间:{{orderb.create_time}}</div>
-      <div v-if="orderb.pay_time" class="order_con">付款时间:{{orderb.pay_time}}</div>
-    </div>
 
   </div>
 </template>
@@ -51,10 +36,10 @@
 
     },
     created:function () {
-      console.log(this.orderb)
+//      console.log('aaaa',this.orderb)
     },
     computed:{
-      goodsData(){return this.orderb.orderb},
+      goodsData(){return this.orderb.orderc},
     },
     methods: {}
   }
@@ -128,30 +113,5 @@
     justify-content: flex-end;
     line-height: 0.34rem
   }
-  .total_price_box{
-    padding:0 0.3rem;
-    background-color: white;
-    box-sizing: border-box;
-    font-size: 0.28rem;
-    line-height: 0.7rem;
-  }
-  .fee_box{
-    width: 100%;height: 0.7rem
-  }
-  .total_price{
-    width: 100%;
-    height: 0.7rem;
-    border-top: 1px solid rgba(213, 213, 213, 1);
-  }
-  .orderno_box{
-    padding:0 0.3rem;
-    background-color: white;
-    font-size: 0.28rem;
-    color: #999999;
-    line-height: 0.55rem;
-  }
-  .orderno_box .order_con{
-    width: 100%;
-    height: 0.55rem
-  }
+
 </style>

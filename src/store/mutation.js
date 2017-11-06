@@ -18,3 +18,4 @@ export const ORDER_NUM = 'ORDER_NUM';
 * 地址
 * */
 export const ADDRESS_DATA = 'ADDRESS_DATA';
+export const EDIT_DATA = 'EDIT_DATA';

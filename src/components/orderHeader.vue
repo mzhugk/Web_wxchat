@@ -1,9 +1,9 @@
 <template>
   <div class="orderHeader">
-    <div class="ftime" v-if="orderb.pay_status==1">
+    <div class="ftime" v-if="other.pay_status==1">
       <img src="" alt="">
       <span>{{timetext}}</span></div>
-    <div v-if="orderb.pay_status==3">
+    <div v-if="other.pay_status==3">
     <div class="com" >
       <img src="" alt="">
       <span>{{orderb.com}}</span>
@@ -25,14 +25,14 @@
         etime:false,
       }
     },
-    props:['orderb'],
+    props:['orderb','other'],
     computed:{
       timetext(){
         const that=this;
         if(that.etime){
-          if(that.orderb.pay_status==1){
-            return '剩'+that.etime[0]+'天'+that.etime[1]+'小时'+that.etime[2]+'分自动取消'
-          }else if(that.orderb.pay_status==3){
+          if(that.other.pay_status==1){
+            return '剩'+that.etime[0]+'天'+that.etime[1]+'小时'+that.etime[2]+'分'+that.etime[3]+'秒订单 自动取消'
+          }else if(that.other.pay_status==3){
             return '订单将在'+that.etime[0]+'天'+that.etime[0]+'小时'+that.etime[0]+'分后自动确认收货'
           }
         }else {return '订单已经关闭'}
@@ -42,10 +42,13 @@
 
     },
     watch:{
-      orderb(newValue){
+      other(newValue){
 
         if(newValue.pay_status==1){
-          let endtime = parseInt(this.orderb.ctime)+1800;
+
+          let stringTime = this.other.ctime;
+          let timestamp2 = Date.parse(new Date(stringTime));
+          let endtime = parseInt(timestamp2/1000)+1800;
           this.countDown(endtime);
 
 
@@ -79,7 +82,7 @@
           if (sec > 0&&sec < 10) {
             sec = "0" + sec;
           }
-          that.etime=[hour,min,sec];
+          that.etime=[d,hour,min,sec];
           }else {
             that.etime=false;
           }

@@ -7,6 +7,7 @@ import Axios from 'axios'
 import store from './store/store'
 import App from './App.vue'
 import router from './router/router'
+import flexible from './assets/js/flexible'
 import directive from './directive/directive'
 Vue.use(Vuex);
 
