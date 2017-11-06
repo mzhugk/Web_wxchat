@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive :exclude="['orderDetail','addAddress','addressList','cartList']">
+    <keep-alive :exclude="['orderDetail','area','area_more','more_goods','column','goods_detail']">
     <router-view></router-view>
     </keep-alive>
   </div>
@@ -13,11 +13,10 @@ export default {
 </script>
 
 <style lang="less">
-@import '~vux/src/styles/reset.less';
 
-body {
-  background-color: #fbf9fe;
-}
+/*body {*/
+  /*background-color: #fbf9fe;*/
+/*}*/
 html,body,#app{
     width: 100%;
     height: 100%;

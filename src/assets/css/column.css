@@ -1,6 +1,7 @@
 #column{
-	background-color: #F2F2F2;
-	padding-bottom: 0.6rem;
+	/*background-color: #F2F2F2;*/
+	/*padding-bottom: 0.6rem;*/
+	height: 100%;
 }
 .column_title img{
 	width: 100%;

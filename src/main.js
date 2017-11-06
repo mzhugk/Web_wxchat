@@ -12,7 +12,6 @@ import directive from './directive/directive'
 Vue.use(Vuex);
 
 
-
 Vue.prototype.$ajax = Axios;
 
 FastClick.attach(document.body);

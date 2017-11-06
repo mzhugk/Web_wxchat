@@ -8,6 +8,7 @@
 
 <script>
   export default {
+    name:"area_more",
     data(){
         return {
             area_box:[]
@@ -33,7 +34,7 @@
         }
 
     },
-    mounted:function () {
+    created:function () {
       this.getarea();
     }
   }
