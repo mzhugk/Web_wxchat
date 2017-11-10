@@ -4,24 +4,24 @@
     <div v-if="goods.length">
       <toast v-model="isShow" text="小主，不要再拉了╮(╯_╰)╭" type="text" :is-show-mask=true position="bottom" width="7.5rem"></toast>
       <pull-to :top-load-method="refresh" :bottom-load-method="loading_more" :top-config="{triggerDistance: 50}" :bottom-config="{triggerDistance: 50} ">
-        <div class="good" v-for="i in goods">
-              <router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">
+        <div class="good" v-for="i in goods" @click="go(i.pro_id,'goods_detail')">
+              <!--<router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">-->
                   <img :src="i.product_logo" alt="">
                   <p class="pro_title">{{i.product_title}}</p>
                   <p class="price" v-if="i.price">¥ {{i.price}}</p>
                   <p class="price" v-else>¥ {{i.product_price}}</p>
-              </router-link>
+              <!--</router-link>-->
         </div>
       </pull-to>
     </div>
     <!--专题推荐的商品-->
     <div v-else-if="obj_product.length">
-          <div class="good" v-for="i in obj_product" >
-              <router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">
+          <div class="good" v-for="i in obj_product" @click="go(i.pro_id,'goods_detail')">
+              <!--<router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">-->
                   <img :src="i.product_logo" alt="">
                   <p class="pro_title">{{i.product_title}}</p>
                   <p class="price">¥ {{i.product_price}}</p>
-              </router-link>
+              <!--</router-link>-->
           </div>
     </div>
   </div>
@@ -47,6 +47,10 @@ export default {
   },
   props:["obj_product"],//专题推荐的商品数据
   methods:{
+    go(params,goods_detail){//路由跳转
+      sessionStorage.setItem("goods_detail",params);
+      this.$router.push({path: goods_detail});
+    },
       getmore_goods(){
         this.title="活动商品";
         let that=this;
@@ -63,8 +67,10 @@ export default {
         });
       },
       getarea_goods(PageIndex){
-      let plan=window.location.href.split("&")[0].split("=")[1];
-      this.title=decodeURI(window.location.href.split("&")[1].split("=")[1]);//title
+//      let plan=window.location.href.split("&")[0].split("=")[1];
+//      this.title=decodeURI(window.location.href.split("&")[1].split("=")[1]);//title
+        let plan=sessionStorage.getItem("area_goods");
+        this.title=decodeURI(sessionStorage.getItem("area_name"));//title
       let that=this;
 
       this.$ajax({//单个地域下产品列表

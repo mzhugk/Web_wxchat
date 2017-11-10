@@ -94,7 +94,7 @@
 	margin-left: 0.2rem;
 }
 .thumb_r>p.price{
-	margin-top:0.8rem;
+	margin-top:1.1rem;
 }
 .thumb_r>p.price span{
 	color: red;
@@ -179,18 +179,19 @@
 	vertical-align: top;
 }
 .tag_box{
-	padding: 0.2rem 0.2rem 0;
+	padding: 0 0.2rem;
 }
 .tag{
 	border-bottom: 0.01rem solid #ddd;
 }
 .tag_title{
 	font-size: 0.28rem;
+	margin-top: 0.2rem;
 }
 .tag_con{
 	color: #aaa;
 	line-height: 1.3;
-	padding:0.1rem 0;
+	padding:0.2rem 0;
 	
 }
 .tag_box>div.tag:last-child{

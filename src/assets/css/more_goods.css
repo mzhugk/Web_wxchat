@@ -18,14 +18,10 @@
 .good:nth-child(even){
 	float: right;
 }
-.good>a{
-	display: block;
-	color: #333;
-}
-.good>a>img{
+.good>img{
 	width: 100%;
 }
-.good>a>p{
+.good>p{
 	margin-top: 0.1rem;
 }
 .good .pro_title{

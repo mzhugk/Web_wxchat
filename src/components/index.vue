@@ -47,12 +47,12 @@
           </div>
           <scroller lock-y :scrollbar-x=false>
             <div class="box1">
-              <div class="box1-item" v-for="i in goods">
-                <router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">
+              <div class="box1-item" v-for="i in goods" @click="go(i.pro_id,'goods_detail')">
+                <!--<router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">-->
                   <img :src="i.product_logo" alt="">
                   <p class="sub-title">{{i.product_title}}</p>
                   <p class="sub-price">¥ {{i.price}}</p>
-                </router-link>
+                <!--</router-link>-->
               </div>
             </div>
           </scroller>
@@ -66,7 +66,8 @@
           </div>
           <ul class="theme">
             <li v-for="i in subject">
-              <router-link :to="{ path: 'column', query: { plan:i.theme_id }}"><img :src="i.img" alt=""></router-link>
+              <!--<router-link :to="{ path: 'column', query: { plan:i.theme_id }}"><img :src="i.img" alt=""></router-link>-->
+              <img :src="i.img" alt="" @click="go(i.theme_id,'column')">
             </li>
           </ul>
         </div>
@@ -151,14 +152,12 @@ export default({
           .catch(function(err){
             console.log(err);
           });
-
-
-
         loaded('done');
       }, 1500);
     },
     go(params,area){//路由跳转
-      this.$router.push({path: area, query: {plan: params}});
+      sessionStorage.setItem(area,params);
+      this.$router.push({path: area});
     }
   },
   created:function () {
@@ -210,7 +209,7 @@ export default({
         .catch(function(err){
           console.log(err);
         });
-    },
+    }
   });
 
 </script>

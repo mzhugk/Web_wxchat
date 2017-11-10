@@ -27,16 +27,13 @@
 .left_1{
 	border-bottom: 0.01rem solid #F2F2F2;
 }
-.left>.left_1>a,.left>.left_2>a{
-	display: block;
-}
-.left_1>a>.img,.left_2>a>.img{
+.left_1>.img,.left_2>.img{
 	display: inline-block;
 	width: 1.8rem;
 	height: 1.8rem;
 	padding:0.1rem;
 }
-.right>a>.img{
+.right>.img{
 	padding: 0.1rem;
 }
 .right img{
@@ -63,10 +60,7 @@
 .text>div>span{
 	font-size: 0.46rem;
 }
-.right>a{
-	display: block;
-}
-.right>a>.r_text{
+.right>.r_text{
 	padding: 0.1rem 0.2rem;
 }
 .r_text>p{
@@ -89,30 +83,27 @@
 .list_bottom>ul>li{
 	padding: 0.3rem;
 }
-.list_bottom>ul>li>a{
-	display: block;
-}
-.list_bottom>ul>li>a>.text{
+.list_bottom>ul>li>.text{
 	margin-left: 0.4rem;
 	width: 61%
 }
-.list_bottom>ul>li>a>.text>p{
+.list_bottom>ul>li>.text>p{
 	font-size: 0.26rem;
 }
-.list_bottom>ul>li>a>div.img{
+.list_bottom>ul>li>div.img{
 	width: 2.0rem;
 	height: 2.0rem;
 }
-.list_bottom>ul>li>a>.text>.sku{
+.list_bottom>ul>li>.text>.sku{
 	font-size: 0.26rem;
 	color: #999;
 }
-.list_bottom>ul>li>a>.text>.sku:after{
+.list_bottom>ul>li>.text>.sku:after{
 	border: 1px solid #27DABC;
 	width: 0.6rem;
 	margin-top: 0.1rem;
 }
-.list_bottom>ul>li>a>.text>.price{
+.list_bottom>ul>li>.text>.price{
 	color: #333;
 	font-size: 0.32rem;
 }

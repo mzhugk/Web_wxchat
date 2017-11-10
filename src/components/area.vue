@@ -5,46 +5,46 @@
       <div class="img_title"><img :src="img_title"></div>
       <div class="list">
           <div class="left">
-                <div class="left_1">
-                  <router-link :to="{ path: 'goods_detail', query: { plan:list[0].pro_id }}">
+                <div class="left_1" @click="go(list[0].pro_id,'goods_detail')">
+                  <!--<router-link :to="{ path: 'goods_detail', query: { plan:list[0].pro_id }}">-->
                     <div class="img"><img :src="list[0].product_logo" alt=""></div>
                     <div class="text">
                       <p>{{list[0].product_title}}</p>
                       <div>¥<span> {{list[0].price}}</span></div>
                     </div>
-                  </router-link>
+                  <!--</router-link>-->
                 </div>
-                <div class="left_2">
-                  <router-link :to="{ path: 'goods_detail', query: { plan:list[1].pro_id }}">
+                <div class="left_2" @click="go(list[1].pro_id,'goods_detail')">
+                  <!--<router-link :to="{ path: 'goods_detail', query: { plan:list[1].pro_id }}">-->
                     <div class="img"><img :src="list[1].product_logo" alt=""></div>
                     <div class="text">
                       <p>{{list[1].product_title}}</p>
                       <div>¥<span> {{list[1].price}}</span></div>
                     </div>
-                  </router-link>
+                  <!--</router-link>-->
                 </div>
           </div>
-          <div class="right">
-            <router-link :to="{ path: 'goods_detail', query: { plan:list[2].pro_id }}">
+          <div class="right" @click="go(list[2].pro_id,'goods_detail')">
+            <!--<router-link :to="{ path: 'goods_detail', query: { plan:list[2].pro_id }}">-->
               <div class="img"><img :src="list[2].product_logo" alt=""></div>
               <div class="r_text">
                 <p>{{list[2].product_title}}</p>
                 <div>¥<span> {{list[2].price}}</span></div>
               </div>
-            </router-link>
+            <!--</router-link>-->
           </div>
       </div>
       <div class="list_bottom">
         <ul>
-          <li class="left_1" v-for="i in list_bottom">
-              <router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">
+          <li class="left_1" v-for="i in list_bottom" @click="go(i.pro_id,'goods_detail')">
+              <!--<router-link :to="{ path: 'goods_detail', query: { plan:i.pro_id }}">-->
                   <div class="img"><img :src="i.product_logo" alt=""></div>
                   <div class="text">
                     <p>{{i.product_title}}</p>
                     <div class="sku">{{i.spec_name}}</div>
                     <div class="price">¥ {{i.price}}</div>
                   </div>
-              </router-link>
+              <!--</router-link>-->
           </li>
         </ul>
       </div>
@@ -92,8 +92,13 @@
             loaded('done');
           }, 1500);
         },
+        go(params,goods_detail){//路由跳转
+          sessionStorage.setItem("goods_detail",params);
+          this.$router.push({path: goods_detail});
+        },
         getarea(PageIndex){
-          let plan=window.location.href.split("=")[1];
+//          let plan=window.location.href.split("=")[1];
+          let plan=sessionStorage.getItem("area");
           let that=this;
           this.$ajax({
             url:"http://www.huijuquanqiu.vip/api/Index/cityDetail",

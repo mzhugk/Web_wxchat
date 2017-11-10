@@ -6,7 +6,7 @@
 /*悬浮条个人中心和购物车*/
 .suspend{
   position: fixed;
-  bottom: 16%;
+  bottom: 20%;
   left: 0;
   width: 1.8rem;
   height: 0.8rem;
@@ -150,9 +150,6 @@
   margin-left: 0.15rem;
   float: left;
 }
-.box1-item>a{
-  display: block;
-}
 .box1-item:first-child {
   margin-left: 0;
 }
@@ -177,7 +174,7 @@
   box-shadow: 0 0 15px #C1C1C1;
   border-radius: 0.2rem;
 }
-.theme>li>a>img{
+.theme>li>img{
   width: 100%;
   border-radius: 0.2rem;
 }

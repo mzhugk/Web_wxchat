@@ -34,10 +34,10 @@
     <transition name="fadeInUp">
       <div class="con" v-show="spec_show" >
         <div class="sku">
-            <div class="thumb"><img :src="pro_data.product_logo"></div>
+            <div class="thumb"><img :src="pro_data.pic[0]"></div>
             <div class="thumb_r">
                 <p class="price"><span>¥ {{current_price}}</span></p>
-                <p class="store"><span>库存: {{pro_data.Spec[0].stock}}</span></p>
+                <p class="store"><span>库存: {{stock}}</span></p>
             </div>
             <div style="clear: both"></div>
             <p class="sku_detail"><span>规格</span></p>
@@ -70,7 +70,8 @@
       </div>
     </transition>
     <!--Toast组件弹窗-->
-    <toast v-model="isShow" text="添加成功" type="text" :is-show-mask=true position="bottom" width="2rem"></toast>
+    <toast v-model="isShow" text="添加成功" type="text" :is-show-mask=false position="bottom" width="2rem"></toast>
+    <toast v-model="isNull" text="库存不足" type="text" :is-show-mask=false position="bottom" width="2rem"></toast>
   </div>
 </template>
 
@@ -84,6 +85,7 @@
         return {
 //          title:"",
           isShow:false,
+          isNull:false,
           count:1,//规格中默认的数量
           X:0,//规格中默认的第一个选项索引
           current_sku:"",//当前选中的规格
@@ -95,6 +97,7 @@
           explain_show:false,//是否显示说明弹窗
           pro_data:[],//商品所有的数据
           sku:[],//规格的数据源
+          stock:"",//库存
           pro_id:null,//商品id
           addressData: ChinaAddressData,//地域选择数据源
           addressValue: ['浙江省', '杭州市', '西湖区'],//默认显示的地域
@@ -107,6 +110,7 @@
         //规格的弹窗显示
         sku_show(){
             this.spec_show=!this.spec_show;
+            this.status=0;
         },
         //规格中减少商品数量1
         reduce(){
@@ -121,6 +125,7 @@
           this.X=index;
           this.current_price=this.pro_data.Spec[this.X].price;
           this.spec_id=this.pro_data.Spec[this.X].spec_id;
+          this.stock=this.pro_data.Spec[this.X].stock;
       },
       //规格中确定按钮
       confirm(){
@@ -137,7 +142,7 @@
                   spec_id:that.spec_id,
                   total:that.count,
                   token_secret:"83bf474d583edf38d1e5b1ff2c5f1da6",
-                  from:"wx"
+//                  from:"wx"
                 };
                 let form_data=qs.stringify(data);
                 this.$ajax({
@@ -145,7 +150,7 @@
                   method:"post",
                   data:form_data,
                 }).then(function (res) {
-                  console.log(res.data);
+//                  console.log(res.data);
                 }).catch(function (err) {
 
                 });
@@ -154,7 +159,13 @@
                 this.isShow=true;
                 break;
               case 2://确认购买
-//                this.$router.push({path: "area", query: {plan: 11}});
+                    if(this.stock-this.count<0){
+                        this.spec_show=false;
+                        this.isNull=true;
+                    }else{
+                      this.spec_show=false;
+//                      this.$router.push({path: "area", query: {plan: 11}});
+                    }
             }
 
       },
@@ -177,10 +188,12 @@
       },
       //立即购买
       buy_now(){
-        this.spec_show=!this.spec_show;
+          this.spec_show=!this.spec_show;
+          this.status=2;
       },
         getpro(){
-          this.pro_id=window.location.href.split("=")[1];
+//          this.pro_id=window.location.href.split("=")[1];
+          this.pro_id=sessionStorage.getItem("goods_detail");
           let that=this;
           this.$ajax({
             url:"http://www.huijuquanqiu.vip/api/goods/goodsdetail",//商品详情数据
@@ -200,6 +213,7 @@
                     that.sku.push(that.pro_data.Spec[i].spec_name);
                   }
                   that.current_sku=that.pro_data.Spec[that.X].spec_name;
+                  that.stock=that.pro_data.Spec[that.X].stock;
                   that.spec_id=that.pro_data.Spec[that.X].spec_id;
                   that.real_price=that.pro_data.Spec[that.X].price;
                   that.current_price=that.pro_data.Spec[that.X].price;

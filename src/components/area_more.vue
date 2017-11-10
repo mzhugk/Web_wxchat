@@ -1,7 +1,8 @@
 <template>
   <div id="area_more" v-title data-title="产地鲸选">
         <div class="area_box" v-for="i in area_box">
-          <router-link :to="{ path: 'area_goods', query: { plan:i.class_id,name:i.name }}"><img :src="i.big_img" alt=""></router-link>
+          <!--<router-link :to="{ path: 'area_goods', query: { plan:i.class_id,name:i.name }}"><img :src="i.big_img" alt=""></router-link>-->
+         <img :src="i.big_img" alt="" @click="go(i.class_id,i.name,'area_goods')">
         </div>
   </div>
 </template>
@@ -15,6 +16,11 @@
         }
     },
     methods:{
+      go(params,name,area_goods){//路由跳转
+        sessionStorage.setItem("area_goods",params);
+        sessionStorage.setItem("area_name",name);
+        this.$router.push({path: area_goods});
+      },
         getarea(){
           let that=this;
           this.$ajax({

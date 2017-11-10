@@ -52,7 +52,8 @@
         }, 1500);
       },
       getcolumn(PageIndex){
-          let plan=window.location.href.split("=")[1];
+//          let plan=window.location.href.split("=")[1];
+        let plan=sessionStorage.getItem("column");
           let that=this;
           this.$ajax({
             url:"http://www.huijuquanqiu.vip/api/Index/theme_detail",
