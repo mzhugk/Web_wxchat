@@ -1,18 +1,38 @@
 <template>
   <div class="orderDetail" v-title :data-title="psIndex">
-    <order-header :orderb.sync="orderb"></order-header>
+    <order-header :orderb.sync="orderb" :other.sync="other"></order-header>
     <div style="height: 0.2rem"></div>
-    <x-address :orderb.sync="orderb"></x-address>
+    <x-address :orderb.sync="orderb.address"></x-address>
     <div style="height: 0.2rem"></div>
-    <order-item :orderb.sync="orderb"></order-item>
+    <order-item v-for="(item,index) in orderb.order":key="index" :orderb.sync="item" ></order-item>
+
+    <div class="total_price_box" >
+      <div class="fee_box" >
+        <span class="lf">运费:</span>
+        <span class="rt">¥ {{other.fee}}</span>
+      </div>
+      <div class="total_price" >
+        <span class="lf">合计:</span>
+        <span class="rt">¥ {{other.true_price}}</span>
+      </div>
+    </div>
+    <div style="height: 0.2rem;"></div>
+    <div class="orderno_box">
+      <div class="order_con" v-if="other.orderno">订单号:{{other.orderno}}</div>
+      <div class="order_con" v-if="!other.orderno">订单号:{{other.orderid}}</div>
+      <div class="order_con">下单时间:{{other.ctime}}</div>
+      <div  class="order_con" v-if="other.pay_time">付款时间:{{other.pay_time}}</div>
+    </div>
+    <div style="height: 0.2rem;"></div>
+
     <div class="bottom_tab">
-      <div class="other_btn" v-if="orderb.pay_status==3||orderb.pay_status==4">查看物流</div>
-      <div class="other_btn" v-if="orderb.pay_status==4">删除订单</div>
-      <div class="other_btn" v-if="orderb.pay_status==2">提醒卖家发货</div>
-      <div class="other_btn" v-if="orderb.pay_status==1||orderb.pay_status==9">取消订单</div>
-      <div class="other_btn" v-if="orderb.pay_status==9">再次购买</div>
-      <div class="buy_btn" v-if="orderb.pay_status==3">确认收货</div>
-      <div class="buy_btn" v-if="orderb.pay_status==1">付款</div>
+      <div class="other_btn" v-if="payStatus==3||payStatus==4">查看物流</div>
+      <div class="other_btn" v-if="payStatus==4">删除订单</div>
+      <div class="other_btn" v-if="payStatus==2">提醒卖家发货</div>
+      <div class="other_btn" v-if="payStatus==1||payStatus==9">取消订单</div>
+      <div class="other_btn" v-if="payStatus==9">再次购买</div>
+      <div class="buy_btn" v-if="payStatus==3">确认收货</div>
+      <div class="buy_btn" v-if="payStatus==1">付款</div>
     </div>
   </div>
 </template>
@@ -29,18 +49,16 @@
     data () {
       return {
         orderb:[],
-        pay_status:['无','待付款','待发货','待收货','已完成','申请退款','驳回','退款成功','','交易关闭'],
+        other:{},
+        pay_text:['无','待付款','待发货','待收货','已完成','申请退款','驳回','退款成功','','交易关闭'],
       }
     },
     components: {
       xAddress,orderItem,orderHeader
     },
     created:function () {
-      const that=this;
-      api.getorderdetail(this.token,this.orderNum,function (res) {
-        console.log('订单数据',res);
-        that.orderb=res.data.object[0];
-      });
+     this.initData();
+
     },
     computed:{
       token(){
@@ -51,13 +69,46 @@
         else {alert('token_error')};
 
       },
-      orderNum(){return this.$route.params.orderId},
+      orderId(){
+        let data=this.$route.params.orderId;
+
+        return data.split('&&')[0]},
+      orderNum(){
+        let data=this.$route.params.orderId;
+
+        return data.split('&&')[1]
+      },
+      payStatus(){
+        if(this.orderb.other){
+          return this.orderb.other.pay_status;
+        }
+
+      },
       psIndex(){
-        let index=this.orderb.pay_status;
-        return this.pay_status[index]},
+        let index=this.payStatus;
+        return this.pay_text[index];
+
+      },
     },
     methods: {
-
+      initData(){
+        const that=this;
+        if(that.orderNum=='pending'){
+          api.getorderdetail2(that.token,that.orderId,function (res) {
+//          console.log('订单数据',res);
+            that.orderb=res.data.object[0];
+            that.other=res.data.object[0].other;
+            console.log(that.orderb)
+          });
+        }else {
+        api.getorderdetail(that.token,that.orderId,that.orderNum,function (res) {
+//          console.log('订单数据',res);
+          that.orderb=res.data.object[0];
+          that.other=res.data.object[0].other;
+          console.log(that.other)
+        });
+        }
+      },
     }
   }
 </script>
@@ -70,6 +121,8 @@
     background-color:rgba(242, 242, 242, 1);
     overflow-x: hidden;
     overflow-y: scroll;
+    padding-bottom: 1.1rem;
+    box-sizing: border-box;
   }
   .bottom_tab{
     position: absolute;
@@ -110,5 +163,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .total_price_box{
+    padding:0 0.3rem;
+    background-color: white;
+    box-sizing: border-box;
+    font-size: 0.28rem;
+    line-height: 0.7rem;
+  }
+  .fee_box{
+    width: 100%;height: 0.7rem
+  }
+  .total_price{
+    width: 100%;
+    height: 0.7rem;
+    border-top: 1px solid rgba(213, 213, 213, 1);
+  }
+
+  .orderno_box{
+    padding:0 0.3rem;
+    background-color: white;
+    font-size: 0.28rem;
+    color: #999999;
+    line-height: 0.55rem;
+
+  }
+  .orderno_box .order_con{
+    width: 100%;
+    height: 0.55rem
   }
 </style>

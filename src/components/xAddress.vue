@@ -1,5 +1,5 @@
 <template>
-  <div class="xAddress">
+  <div class="xAddress" @click="goAddress">
 
 <div class="fullArea" v-if="defaultItem">
     <div style="width: 6.46rem;height: 1rem;" @click="">
@@ -14,9 +14,8 @@
     <div class="fullArea" v-if="!defaultItem">
 
     </div>
-    <img style="width: 100%;position: absolute;left: 0;top: 0;" src="../assets/img/address_bg.png" alt="">
-    <img style="position: absolute;left: 0;top: 100%;width: 100%;transform: translate(0%, -100%);
-    -webkit-transform: translate(0%, -100%)" src="../assets/img/address_bg.png" alt="">
+    <img class="top_line" src="../assets/img/address_bg.png" alt="">
+    <img class="bottom_line" src="../assets/img/address_bg.png" alt="">
 
   </div>
 </template>
@@ -34,6 +33,7 @@
     computed:{
       addressData(){return this.$store.getters.getAddress},
       defaultItem(){
+        //默认地址，订单则显示订单地址
         const that=this;
         if(that.orderb){
           that.changeFlag=false;
@@ -57,7 +57,7 @@
     },
     methods:{
       goAddress:function () {
-//        this.$router.push('/address');
+        this.$router.push('/addressList');
       }
     }
   }
@@ -111,5 +111,19 @@
   .fullArea{
     width: 100%;
     height: 100%;
+  }
+  .top_line{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .bottom_line{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    transform: translate(0%, -100%);
+    -webkit-transform: translate(0%, -100%)
   }
 </style>
