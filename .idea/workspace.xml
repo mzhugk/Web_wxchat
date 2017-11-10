@@ -3,20 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4399da6a-da34-4d5c-b220-9db3c20def71" name="默认的" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/area.css" afterPath="$PROJECT_DIR$/src/assets/css/area.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/goods_detail.css" afterPath="$PROJECT_DIR$/src/assets/css/goods_detail.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/index.css" afterPath="$PROJECT_DIR$/src/assets/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/css/more_goods.css" afterPath="$PROJECT_DIR$/src/assets/css/more_goods.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/area.vue" afterPath="$PROJECT_DIR$/src/components/area.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/area_more.vue" afterPath="$PROJECT_DIR$/src/components/area_more.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/column.vue" afterPath="$PROJECT_DIR$/src/components/column.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/goods_detail.vue" afterPath="$PROJECT_DIR$/src/components/goods_detail.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/index.vue" afterPath="$PROJECT_DIR$/src/components/index.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/more_goods.vue" afterPath="$PROJECT_DIR$/src/components/more_goods.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/xAddress.vue" afterPath="$PROJECT_DIR$/src/components/xAddress.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router/router.js" afterPath="$PROJECT_DIR$/src/router/router.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="goods_detail.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="goods_detail.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/goods_detail.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+            <state relative-caret-position="528">
+              <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#cell#2;n#group#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#span#0;n#cell#2;n#group#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -49,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="209" column="27" lean-forward="true" selection-start-line="209" selection-start-column="27" selection-end-line="209" selection-end-column="27" />
+            <state relative-caret-position="409">
+              <caret line="218" column="8" lean-forward="true" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
               <folding>
                 <element signature="e#3505#5298#0" expanded="false" />
               </folding>
@@ -471,7 +457,7 @@
       <workItem from="1509583500385" duration="27199000" />
       <workItem from="1509670648877" duration="7050000" />
       <workItem from="1509928714755" duration="2402000" />
-      <workItem from="1510278050362" duration="1399000" />
+      <workItem from="1510278050362" duration="1440000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1506585913184</created>
@@ -599,11 +585,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509428508791</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="2017.1110">
+      <created>1510279871130</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1510279871130</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="490265000" />
+    <option name="totallyTimeSpent" value="490306000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -616,7 +609,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13435195" sideWeight="0.59452057" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49578503" order="6" side_tool="false" content_ui="tabs" />
@@ -624,7 +616,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17118093" sideWeight="0.50632244" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20585048" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23618636" sideWeight="0.49367756" order="7" side_tool="false" content_ui="tabs" x="583" y="217" width="796" height="685" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23618636" sideWeight="0.49367756" order="7" side_tool="false" content_ui="tabs" x="583" y="217" width="796" height="685" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13435195" sideWeight="0.40547946" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -706,7 +698,8 @@
     <MESSAGE value="产地鲸选，活动商品，商品列表，专栏推荐" />
     <MESSAGE value="2017.10.19 基本完成页面所有展示内容" />
     <MESSAGE value="2017.10.31" />
-    <option name="LAST_COMMIT_MESSAGE" value="2017.10.31" />
+    <MESSAGE value="2017.1110" />
+    <option name="LAST_COMMIT_MESSAGE" value="2017.1110" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -913,6 +906,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="693">
           <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1003,25 +997,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="209" column="27" lean-forward="true" selection-start-line="209" selection-start-column="27" selection-end-line="209" selection-end-column="27" />
-          <folding>
-            <element signature="e#3505#5298#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/goods_detail.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        <state relative-caret-position="528">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#span#0;n#cell#2;n#group#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#span#0;n#cell#2;n#group#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#transition#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#3814#3908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="218" column="8" lean-forward="true" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
+          <folding>
+            <element signature="e#3505#5298#0" expanded="false" />
           </folding>
         </state>
       </provider>
