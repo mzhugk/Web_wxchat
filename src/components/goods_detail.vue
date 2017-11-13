@@ -16,7 +16,7 @@
       </group>
     <div class="pro_desc">
         <div v-for="src in list">
-          <x-img  default-src="http://www.huijuquanqiu.vip/webAPP/img_loading.jpg" :src="src" :offset="-100" ></x-img>
+          <x-img  default-src="http://www.huijuquanqiu.vip/wxtest/img_loading.jpg" :src="src" :offset="-100" ></x-img>
         </div>
     </div>
     <div class="buy">
@@ -141,7 +141,7 @@
                   pro_id:that.pro_id,
                   spec_id:that.spec_id,
                   total:that.count,
-                  token_secret:"83bf474d583edf38d1e5b1ff2c5f1da6",
+                  token_secret:that.token,
 //                  from:"wx"
                 };
                 let form_data=qs.stringify(data);
@@ -164,7 +164,7 @@
                         this.isNull=true;
                     }else{
                       this.spec_show=false;
-//                      this.$router.push({path: "area", query: {plan: 11}});
+                      this.$router.push({path: "confirmOrder", query: {count: this.count,pro_id:this.pro_id,spec_id:this.spec_id}});
                     }
             }
 
@@ -179,7 +179,7 @@
       },
       //前往购物车列表
       cart_list(){
-
+          this.$router.push("cartList");
       },
       //加入购物车
       add_cart(){
@@ -232,7 +232,17 @@
     },
     created:function () {
       this.getpro();
-    }
+      this.$store.dispatch('gettoken');
+    },
+    computed:{
+      token(){
+        const that=this;
+        if(that.$store.getters.token){return this.$store.getters.token}
+        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
+        else {alert('token_error')}
+
+      },
+    },
   }
 </script>
 

@@ -10,11 +10,15 @@
 
       <x-input title="详细地址"  placeholder="请输入详细地址" v-model="editData.shr_address"></x-input>
       <x-input title="邮编" keyboard="number"  placeholder="请输入邮政编码" :min="6" :max="6" v-model="editData.code"></x-input>
-      <div v-if="addORedit" class="def_click" @click="defaultChange">
-        <img src="" alt="">{{is_default}}
-      </div>
-      <div class="btn" @click="addressInfo()">保存</div>
+
     </group>
+    <div v-if="addORedit" class="def_click" @click="defaultChange">
+
+      <img src="../assets/img/selected.png" alt="" v-show="is_default==1">
+      <img src="../assets/img/unselected.png" alt="" v-show="is_default!=1">
+      <span style="font-size: 0.32rem">设为默认</span>
+    </div>
+    <div class="btn" @click="addressInfo()">保存</div>
 
   </div>
 </template>
@@ -154,10 +158,12 @@
     width: 6.9rem;
     height: 0.9rem;
     margin: auto;
+    display: flex;
+    align-items: center;
   }
   .def_click img{
     width: 0.3rem;
     height: 0.3rem;
-
+    margin-right: 0.2rem;
   }
 </style>

@@ -9,8 +9,9 @@
             <swipeout-button background-color="rgba(39, 218, 188, 1)"  @click.native="defBtnClick(item)">设为<br>默认</swipeout-button>
             <swipeout-button type="warn" @click.native="delBtnClick(item)">删除<br>地址</swipeout-button>
           </div>
-          <div slot="content" class="item_con">
-            <img src="" alt="">
+          <div slot="content" class="item_con" style="font-size: 5px">
+            <img src="../assets/img/selected.png" alt="" v-show="item.is_default==1">
+            <img src="../assets/img/unselected.png" alt="" v-show="item.is_default!=1">
             <div class="item_box">
               <div class="shr_name">{{item.shr_name}}</div>
               <div class="shr_phone">{{item.shr_tel}}</div>

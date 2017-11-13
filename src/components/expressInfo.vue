@@ -121,7 +121,8 @@
     position: absolute;
     top: -0.89rem;
     left: 50%;
-    /*left: 0.07rem;*/
+    transform: translate(-100%,0%);
+
   }
   .time_box{
     height: 100%;

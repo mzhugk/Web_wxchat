@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive :exclude="['orderDetail','area','area_more','more_goods','column','goods_detail']">
+    <keep-alive :exclude="['orderDetail','area','area_more','more_goods','column','goods_detail','addAddress','addressList','MyOrder']">
     <router-view></router-view>
     </keep-alive>
   </div>
@@ -20,6 +20,7 @@ export default {
 html,body,#app{
     width: 100%;
     height: 100%;
+    font-size: 0.12rem;
   }
 
 </style>

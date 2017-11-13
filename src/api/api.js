@@ -136,6 +136,13 @@ export  default {
       cb(res)
     })
   },
+  //个人
+  personData:function (token,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/User/person',qs.stringify({
+      'token_secret':token, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
 }
 
 

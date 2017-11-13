@@ -2,8 +2,8 @@
     <div id="index" v-title :data-title="title">
       <!--页面的悬浮条：个人中心和购物车-->
       <div class="suspend">
-        <p class="personal"></p>
-        <p class="w_cart"></p>
+        <p class="personal" @click="person()"></p>
+        <p class="w_cart" @click="wCart()"></p>
       </div>
       <pull-to :top-load-method="refresh"  :top-config="{triggerDistance: 50}" >
         <div>
@@ -12,7 +12,7 @@
           <swiper :list="baseList" auto loop :aspect-ratio="375/750" :show-dots="false" :show-desc-mask="false" ></swiper>
         </div>
         <!--地域-->
-        <div class="area">
+        <div class="area" v-if="area[0]">
           <div class="area_lf">
             <p class="area_1"><img :src="area[0].image"   @click="go(area[0].class_id,'area')"></p>
           </div>
@@ -158,6 +158,12 @@ export default({
     go(params,area){//路由跳转
       sessionStorage.setItem(area,params);
       this.$router.push({path: area});
+    },
+    wCart(){
+        this.$router.push("cartList");
+    },
+    person(){
+      this.$router.push("person");
     }
   },
   created:function () {
