@@ -6,7 +6,7 @@
 /*悬浮条个人中心和购物车*/
 .suspend{
   position: fixed;
-  bottom: 20%;
+  bottom: 5%;
   left: 0;
   width: 1.8rem;
   height: 0.8rem;
@@ -99,6 +99,7 @@
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+  font-size: 0.26rem;
 }
 /*活动页*/
 .activity{
@@ -127,7 +128,7 @@
   margin-right: 0.2rem;
 }
 .goods>.goods_tit>.activities{
-  font-size:0.36rem;
+  font-size:0.34rem;
   letter-spacing: 2px;
 }
 .goods>.goods_tit>.pro_more{

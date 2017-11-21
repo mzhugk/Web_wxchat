@@ -25,6 +25,7 @@
 
 <script>
   import api from '../api/api'
+  import api2 from '../api/commInfo'
   import cityList from '../assets/js/cityList.json'
   import { XInput, Group, XButton, Cell ,XAddress,Value2nameFilter as value2name} from 'vux'
 
@@ -58,11 +59,13 @@
     computed:{
       token(){
         const that=this;
-
-        if(that.$store.getters.token){return that.$store.getters.token}
-        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
-        else {alert('token_error')};
-
+        if(api2.getCookie('user_token')){return api2.getCookie('user_token')}
+        else {
+          let url=window.location.href;
+          url=url.split('/#/')[1];
+          sessionStorage.setItem('return_url',url);
+          that.$router.push('login');
+        };
       },
 //      editData(){
 //        const that=this;
@@ -148,7 +151,7 @@
     height: 0.9rem;
     background-color: rgba(39, 218, 188, 1);
     border-radius: 0.1rem;
-    margin: auto;
+    margin:0.29rem auto 0;
     font-size: 0.34rem;
     line-height: 0.9rem;
     text-align: center;
@@ -156,10 +159,11 @@
   }
   .def_click{
     width: 6.9rem;
-    height: 0.9rem;
-    margin: auto;
+    height: 0.32rem;
+    margin:0.29rem auto 0;
     display: flex;
     align-items: center;
+
   }
   .def_click img{
     width: 0.3rem;

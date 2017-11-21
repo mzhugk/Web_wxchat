@@ -26,13 +26,13 @@
     <div style="height: 0.2rem;"></div>
 
     <div class="bottom_tab">
-      <div class="other_btn" v-if="payStatus==3||payStatus==4">查看物流</div>
-      <div class="other_btn" v-if="payStatus==4">删除订单</div>
-      <div class="other_btn" v-if="payStatus==2">提醒卖家发货</div>
-      <div class="other_btn" v-if="payStatus==1||payStatus==9">取消订单</div>
-      <div class="other_btn" v-if="payStatus==9">再次购买</div>
-      <div class="buy_btn" v-if="payStatus==3">确认收货</div>
-      <div class="buy_btn" v-if="payStatus==1">付款</div>
+      <div class="other_btn" v-if="payStatus==3||payStatus==4" @click="findExpress()">查看物流</div>
+      <div class="other_btn" v-if="payStatus==9"  @click="delOrder()">删除订单</div>
+      <div class="other_btn" v-if="payStatus==2" @click="notice()">提醒卖家发货</div>
+      <div class="other_btn" v-if="payStatus==1" @click="cancelOrder()">取消订单</div>
+      <div class="other_btn" v-if="payStatus==9" @click="buyAgain()">再次购买</div>
+      <div class="buy_btn" v-if="payStatus==3" @click="confirmReceive()">确认收货</div>
+      <div class="buy_btn" v-if="payStatus==1" @click=" goodsPay()">付款</div>
     </div>
   </div>
 </template>
@@ -41,7 +41,8 @@
 
   //支付状态 1待付款2代发货3已发货4已完成5申请退款6驳回7退款成功9关闭
   import api from '../api/api'
-  import xAddress from './xAddress.vue'
+  import api2 from '../api/commInfo'
+  import xAddress from './xAddressD.vue'
   import orderItem from './orderItem.vue'
   import orderHeader from './orderHeader.vue'
   export default {
@@ -63,13 +64,21 @@
     computed:{
       token(){
         const that=this;
-
-        if(that.$store.getters.token){return this.$store.getters.token}
-        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
-        else {alert('token_error')};
-
+        if(api2.getCookie('user_token')){return api2.getCookie('user_token')}
+        else {
+          let url=window.location.href;
+          url=url.split('/#/')[1];
+          sessionStorage.setItem('return_url',url);
+          that.$router.push('login');
+        };
+      },
+      openid(){
+        if(api2.getCookie('openid')){
+          return api2.getCookie('openid');
+        }
       },
       orderId(){
+//        console.log(this.$route.params)
         let data=this.$route.params.orderId;
 
         return data.split('&&')[0]},
@@ -105,10 +114,67 @@
 //          console.log('订单数据',res);
           that.orderb=res.data.object[0];
           that.other=res.data.object[0].other;
-          console.log(that.other)
+          console.log(that.orderb)
+
         });
         }
       },
+      notice:function () {
+        const that=this;
+        api.notice(that.token,that.orderNum,function (res) {
+          if(res.data.code=100000){
+            alert(res.data.description);
+
+          }
+        })
+      },
+      delOrder(){
+        const that=this;
+        api.delOrder(that.token,that.orderId,that.orderNum,function (res) {
+          if(res.data.code=100000){
+            alert(res.data.description);
+            that.delFlag=false;
+            that.$store.dispatch('setOrderType',3);
+            that.$router.replace('../../MyOrder');
+          }
+        })
+      },
+      buyAgain(){
+        const that=this;
+        let pro_id=that.orderb.order[0].orderc[0].product_id;
+        this.$router.push({path:'../../goods_detail',query:{'pro_id':pro_id}});
+
+      },
+      confirmReceive(){
+        const that=this;
+        api.confirmReceive(that.token,that.orderId,that.orderNum,function (res) {
+          if(res.data.code=100000){
+            alert(res.data.description);
+            that.delFlag=false;
+          }
+        })
+      },
+      cancelOrder(){
+        const that=this;
+        api.cancelOrder(that.token,that.orderId,function (res) {
+          if(res.data.code=100000){
+            alert(res.data.description);
+            that.delFlag=false;
+            that.$store.dispatch('setOrderType',2);
+            that.$router.replace('MyOrder');
+          }
+        })
+      },
+      findExpress(){
+        let expressno=this.orderb.order[0].expressno;
+        let comtype=this.orderb.order[0].comtype;
+
+        this.$router.push('../../expressInfo/'+expressno+'&&'+comtype)
+      },
+      goodsPay(){
+        const that=this;
+        api2.wxPay(that.openid,that.orderId,that);
+      }
     }
   }
 </script>

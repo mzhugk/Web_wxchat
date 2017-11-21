@@ -1,9 +1,9 @@
 <template>
-  <div class="goodsitems"  >
+  <div class="goodsitems" v-if="delFlag">
     <div style="width: 90%;height: 100%;margin: auto;position: relative;">
     <div class="item-header clear">
       <div class="lf full-height centerHei" style="font-size: 0.32rem;color:#666666;">{{itemData.shop_name}}</div>
-      <div class="rt full-height centerHei" style="font-size: 0.28rem;color:#27dabc;">{{itemData.pay_status}}</div>
+      <div class="rt full-height centerHei" style="font-size: 0.28rem;color:#27dabc;">{{statusCon}}</div>
     </div>
     <div class="item-body" @click="itemDetail">
 
@@ -21,13 +21,13 @@
       <!--<div class="btn" v-if="itemData.pay_status==1||itemData.pay_status==9">取消订单</div>-->
       <!--<div class="btn-green"></div>-->
 
-      <div class="btn" v-if="itemData.pay_status==3||itemData.pay_status==4">查看物流</div>
-      <div class="btn" v-if="itemData.pay_status==4">删除订单</div>
-      <div class="btn" v-if="itemData.pay_status==2">提醒卖家发货</div>
-      <div class="btn" v-if="itemData.pay_status==1||itemData.pay_status==9">取消订单</div>
-      <div class="btn" v-if="itemData.pay_status==9">再次购买</div>
-      <div class="btn-green" v-if="itemData.pay_status==3">确认收货</div>
-      <div class="btn-green" v-if="itemData.pay_status==1">付款</div>
+      <div class="btn" v-if="itemData.pay_status==3||itemData.pay_status==4" @click="findExpress()">查看物流</div>
+      <div class="btn" v-if="itemData.pay_status==9" @click="delOrder()">删除订单</div>
+      <div class="btn" v-if="itemData.pay_status==2" @click="notice()">提醒卖家发货</div>
+      <div class="btn" v-if="itemData.pay_status==1" @click="cancelOrder()">取消订单</div>
+      <div class="btn" v-if="itemData.pay_status==9" @click="buyAgain()">再次购买</div>
+      <div class="btn-green" v-if="itemData.pay_status==3" @click="confirmReceive()">确认收货</div>
+      <div class="btn-green" v-if="itemData.pay_status==1" @click="goodsPay()">付款</div>
     </div>
     </div>
   </div>
@@ -35,20 +35,85 @@
 
 <script>
   import api from '../api/api'
+  import api2 from '../api/commInfo'
   export default {
     name: 'gooditems',
     data () {
       return {
         data:'',
+        delFlag:true,
+        statusText:['无','待付款','待发货','已发货','已完成','申请退款','驳回','退款成功','','交易关闭'],
       }
     },
     props:['itemData'],
     computed:{
-//      addressData(){return this.$store.getters.testgetter},
+      token(){
+        const that=this;
+        if(api2.getCookie('user_token')){return api2.getCookie('user_token')}
+        else {
+          let url=window.location.href;
+          url=url.split('/#/')[1];
+          sessionStorage.setItem('return_url',url);
+          that.$router.push('login');
+        };
+      },
+      statusCon(){
+        const that=this;
+        let index=that.itemData.pay_status;
+        return that.statusText[index];
+      },
+      openid(){
+        if(api2.getCookie('openid')){
+          return api2.getCookie('openid');
+        }
+      },
     },
     methods:{
-      test:function () {
-//        console.log(this.itemData)
+      notice:function () {
+        const that=this;
+        api.notice(that.token,that.itemData.orderno,function (res) {
+          if(res.data.code=100000){
+            alert(res.data.description);
+
+          }
+        })
+      },
+      delOrder(){
+        const that=this;
+        api.delOrder(that.token,that.itemData.orderid,that.itemData.orderno,function (res) {
+          if(res.data.code=100000){
+            alert(res.data.description);
+            that.delFlag=false;
+          }
+        })
+      },
+      buyAgain(){
+        const that=this;
+        this.$router.push({path:'goods_detail',query:{pro_id:that.itemData.product_id}});
+
+      },
+      confirmReceive(){
+        const that=this;
+        api.confirmReceive(that.token,that.itemData.orderid,that.itemData.orderno,function (res) {
+          if(res.data.code=100000){
+            alert(res.data.description);
+            that.delFlag=false;
+          }
+        })
+      },
+      cancelOrder(){
+        const that=this;
+        api.cancelOrder(that.token,that.itemData.orderid,function (res) {
+          if(res.data.code=100000){
+            alert(res.data.description);
+            that.delFlag=false;
+          }
+        })
+      },
+      findExpress(){
+        let expressno=this.itemData.expressno;
+        let comtype=this.itemData.comtype;
+        this.$router.push('../../expressInfo/'+expressno+'&&'+comtype);
       },
       itemDetail:function () {
 //        console.log(this.itemData.pay_status)
@@ -60,6 +125,10 @@
           this.$router.push('/MyOrder/detail/'+this.itemData.orderid+'&&'+this.itemData.orderno);
         }
 
+      },
+      goodsPay(){
+        const that=this;
+        api2.wxPay(that.openid,that.itemData.orderid,that);
       }
     }
   }
@@ -140,6 +209,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    font-size: 0.26rem;
   }
   .item-btn .btn-green{
     width: 1.6rem;
@@ -155,7 +225,7 @@
     width: 1.6rem;
     height: 0.6rem;
     border-radius:  0.1rem;
-    border: solid 1px rgba(0, 0, 0, 1);
+    border: solid 1px rgba(130, 130, 130, 1);
     box-sizing: border-box;
     margin-left: 0.3rem;
     display: flex;

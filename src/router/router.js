@@ -14,6 +14,10 @@ import addAddress from '../components/addAddress.vue'
 import expressInfo from '../components/expressInfo.vue'
 import cartList from '../components/cartList.vue'
 import person from '../components/person.vue'
+import confirmOrder from '../components/confirmOrder.vue'
+import cartConfirm from '../components/cartConfirm.vue'
+import login from '../components/login.vue'
+
 Vue.use(VueRouter);
 
 
@@ -31,9 +35,12 @@ const routes = [
   {path: '/MyOrder/detail/:orderId',component: OrderDetail},
   {path: '/addressList',component: addressList},
   {path: '/addAddress',component: addAddress},
-  {path: '/expressInfo',component: expressInfo},
+  {path: '/expressInfo/:expressno',component: expressInfo},
   {path: '/cartlist',component: cartList},
   {path: '/person',component: person},
+  {path: '/confirmOrder',component: confirmOrder},
+  {path: '/cartConfirm',component: cartConfirm},
+  {path: '/login',component: login},
 ];
 
 

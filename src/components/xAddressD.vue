@@ -1,5 +1,5 @@
 <template>
-  <div class="xAddress" @click="goAddress">
+  <div class="xAddress">
 
 <div class="fullArea" v-if="defaultItem">
     <div style="width: 6.46rem;height: 1rem;" @click="">
@@ -8,7 +8,7 @@
 
     </div>
     <div class="content">{{defaultItem.shr_province}}{{defaultItem.shr_city}}{{defaultItem.shr_area}}{{defaultItem.shr_address}}</div>
-    <div class="arrow" >></div>
+    <!--<div class="arrow" >></div>-->
 
   </div>
     <div class="fullArea add_new" v-if="!defaultItem">
@@ -21,9 +21,8 @@
 </template>
 
 <script>
-
   export default {
-    name: 'xAddress',
+    name: 'xAddressD',
     data () {
       return {
         changeFlag:true,
@@ -56,9 +55,9 @@
       this.$store.dispatch('getAddressData');
     },
     methods:{
-      goAddress:function () {
-        this.$router.push('/addressList');
-      }
+//      goAddress:function () {
+//        this.$router.push('/addressList');
+//      }
     }
   }
 </script>

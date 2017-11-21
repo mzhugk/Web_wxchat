@@ -1,23 +1,34 @@
 <template>
   <div class="orderHeader">
+
     <div class="ftime" v-if="other.pay_status==1">
-      <img src="" alt="">
-      <span>{{timetext}}</span></div>
-    <div v-if="other.pay_status==3">
-    <div class="com" >
-      <img src="" alt="">
-      <span>{{orderb.com}}</span>
-      </div>
-    <div class="com" >
-      <img src="" alt="">
-      <span>{{orderb.expressno}}</span>
+      <img src="../assets/img/time.png" alt="">
+      <span>{{timetext1}}</span>
     </div>
+    <div class="ftime" v-if="other.pay_status==3">
+      <!--{{etime}}-->
+      <!--{{orderb.fhtime}}-->
+      <img src="../assets/img/time.png" alt="">
+      <span>{{timetext2}}</span>
+    </div>
+    <div class="exp_box" v-if="other.pay_status==3">
+      <div>
+    <div class="com" >
+      <img src="" alt="">
+      <span>快递公司:{{orderb.order[0].com}}</span>
+      </div>
+      <div style="height: 0.15rem"></div>
+    <div class="com" >
+      <img src="" alt="">
+      <span>运单号:{{orderb.order[0].expressno}}</span>
+    </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import api from '../api/api'
+
   export default {
     name: 'orderHeader',
     data () {
@@ -27,22 +38,30 @@
     },
     props:['orderb','other'],
     computed:{
-      timetext(){
+      timetext1(){
         const that=this;
-        if(that.etime){
+
           if(that.other.pay_status==1){
+            if(that.etime){
             return '剩'+that.etime[0]+'天'+that.etime[1]+'小时'+that.etime[2]+'分'+that.etime[3]+'秒订单 自动取消'
-          }else if(that.other.pay_status==3){
-            return '订单将在'+that.etime[0]+'天'+that.etime[0]+'小时'+that.etime[0]+'分后自动确认收货'
-          }
-        }else {return '订单已经关闭'}
+          }else {return '订单已经关闭'}
+        }
       },
+      timetext2(){
+        const that=this;
+          if(that.other.pay_status==3){
+            if(that.etime){
+            return '订单将在'+that.etime[0]+'天'+that.etime[1]+'小时'+that.etime[2]+'分后自动确认收货'
+          }else {return '订单已经自动确认收货'}
+        }
+      }
     },
     created:function () {
 
     },
     watch:{
       other(newValue){
+        const that=this;
 
         if(newValue.pay_status==1){
 
@@ -53,17 +72,18 @@
 
 
         }else if(newValue.pay_status==3){
-                  if(newValue.ftime!==0&&newValue.ftime!=='0'){
-          this.countDown(newValue.ftime);
+
+                  if(that.orderb.fhtime!=0&&that.orderb.fhtime!='0'){
+          this.countDown(that.orderb.fhtime);
         }
         }
       }
     },
     methods:{
+
       countDown:function (num) {
         const that=this;
         let time=parseInt(num);
-
         function gettime() {
           let nowTime = Math.round(new Date().getTime()/1000);
           let endTime = time;
@@ -121,5 +141,24 @@
     line-height: 0.78rem;
     margin-left: 0.18rem;
     color: #27dabc;
+  }
+  .exp_box{
+    width: 100%;
+    height: 1.24rem;
+    display: flex;
+    align-items: center;
+  }
+  .com{
+    width: 100%;
+    height: 0.28rem;
+  }
+  .com img{
+    width: 0.24rem;
+  }
+  .com span{
+    color: #333333;
+    font-size: 0.28rem;
+    line-height: 0.28rem;
+    margin-left: 0.18rem;
   }
 </style>

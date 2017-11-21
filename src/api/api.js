@@ -11,7 +11,7 @@ export  default {
     });
 
   },
-  gettoken:function (cb) {
+  get101:function (cb) {
     axios.post('http://huijuquanqiu.vip/api/test/test101').then(function (res) {
       cb(res)
     });
@@ -140,6 +140,83 @@ export  default {
   personData:function (token,cb) {
     axios.post('http://www.huijuquanqiu.vip/api/User/person',qs.stringify({
       'token_secret':token, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  //确认订单页面数据
+
+  confirmOrder:function (token,total,pro_id,spec_id,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Orderv3/confirmOrder',qs.stringify({
+      'token_secret':token,'total':total,'pro_id':pro_id,'spec_id':spec_id, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  //创建订单
+  creatOrder:function (token,total,pro_id,spec_id,address_id,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Orderv3/createOrder',qs.stringify({
+      'token_secret':token,'total':total,'pro_id':pro_id,'spec_id':spec_id,'address_id':address_id, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  findStock:function (orderno,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Pay/find_stock',qs.stringify({
+      'orderno':orderno, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  //购物车购买
+  cartConfirm:function (token,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Orderv3/carConfirmOrder',qs.stringify({
+      'token_secret':token, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  creatCartOrder:function (token,address_id,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Orderv3/carCreateOrder',qs.stringify({
+      'token_secret':token,'address_id':address_id, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  //提醒发货
+
+  notice:function (token,orderno,cb) {
+  axios.post('http://www.huijuquanqiu.vip/api/Orderv3/notice',qs.stringify({
+    'token_secret':token,'orderno':orderno, 'from':'wx'})).then(function (res) {
+    cb(res)
+  })
+},
+  //删除订单
+  delOrder:function (token,orderid,orderno,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Orderv3/del_order',qs.stringify({
+      'token_secret':token,'orderid':orderid,'orderno':orderno, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  //确认收货
+  confirmReceive:function (token,orderid,orderno,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Orderv3/confirm',qs.stringify({
+      'token_secret':token,'orderid':orderid,'orderno':orderno, 'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  //取消
+  cancelOrder:function (token,orderid,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Orderv3/cancel_order',qs.stringify({
+      'token_secret':token,'orderid':orderid,'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  //物流
+  findExpress:function (token,expressno,comtype,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/Order/find_express',qs.stringify({
+      'token_secret':token,'expressno':expressno,'comtype':comtype,'from':'wx'})).then(function (res) {
+      cb(res)
+    })
+  },
+  //身份证信息修改
+  idcardEdit:function (token,id_card,cb) {
+    axios.post('http://www.huijuquanqiu.vip/api/User/edit_identity',qs.stringify({
+      'token_secret':token,'id_card':id_card,'from':'wx'})).then(function (res) {
       cb(res)
     })
   },

@@ -1,7 +1,22 @@
 <template>
   <div class="expressInfo" v-title data-title="物流信息">
     <div class="header">
-      <img src="" alt="">
+      <img :src="expData.image" alt="">
+      <div class="top_con rt">
+        <div>
+          <div style="height: 0.32rem;font-size: 0.32rem;line-height: 0.32rem">
+            运输状态<span style="margin-left: 0.1rem;color: #27dabc;">{{expData.state}}</span>
+          </div>
+          <div style="height: 0.18rem"></div>
+          <div style="height: 0.28rem;font-size: 0.28rem;line-height: 0.28rem">
+            <span style="color: #999999;">承运公司:{{expData.com}}</span>
+          </div>
+          <div style="height: 0.18rem"></div>
+          <div style="height: 0.28rem;font-size: 0.28rem;line-height: 0.28rem">
+            <span style="color: #999999;">运单编号:{{expData.expressno}}</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div style="height: 0.2rem"></div>
     <div class="box_title">
@@ -11,15 +26,15 @@
       </div>
     </div>
 
-    <div class="box" v-for="(i,index) in 5":key="index">
+    <div class="box" v-for="(item,index) in expData.data":key="index">
 
       <div class="time_box">
-        <p>12:00:00</p>
-        <p  style="font-size: 0.2rem;color: #999999;">2016-04-17</p>
+        <p :class="{first_color:index==0}">{{item.his}}</p>
+        <p  style="font-size: 0.2rem;">{{item.ymd}}</p>
       </div>
       <div  class="cricle" :class="{ v_line: index!=0 }"></div>
       <div class="con_box">
-        <p>申通快递员 广东广州 收件员 xxx 已揽件</p>
+        <p :class="{first_color:index==0}">{{item.context}}</p>
       </div>
     </div>
 
@@ -28,6 +43,7 @@
 
 <script>
   import api from '../api/api'
+  import api2 from '../api/commInfo'
   import { Timeline, TimelineItem, XButton } from 'vux'
   export default {
     name: 'expressInfo',
@@ -37,7 +53,7 @@
     },
     data () {
       return {
-
+        expData:''
       }
     },
     watch:{
@@ -47,33 +63,39 @@
     computed:{
       token(){
         const that=this;
-
-        if(that.$store.getters.token){return that.$store.getters.token}
-        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
-        else {alert('token_error')};
-
+        if(api2.getCookie('user_token')){return api2.getCookie('user_token')}
+        else {
+          let url=window.location.href;
+          url=url.split('/#/')[1];
+          sessionStorage.setItem('return_url',url);
+          that.$router.push('login');
+        };
       },
       expressno(){
-        let data=this.$route.params.expressdata;
-
-        return data.split('&&')[0];
+        let data=this.$route.params.expressno;
+        data=data.split('&&')[0];
+        return data;
       },
       comtype(){
-        let data=this.$route.params.expressdata;
-
-        return data.split('&&')[1];
+        let data=this.$route.params.expressno;
+        data=data.split('&&')[1];
+        return data;
       }
 
     },
 
     created:function () {
-
+      this.init()
     },
     methods:{
       init(){
         const that=this;
         api.expressData(that.token,that.expressno,that.comtype,function (res) {
-          res.object[0]
+
+          if(res.data.code==100000){
+          that.expData=res.data.object[0];
+            console.log(that.expData);
+          }
         })
       }
     },
@@ -94,6 +116,7 @@
   background-color: white;
   padding-top: 0.2rem;
   box-sizing: border-box;
+  color: #999999;
 }
 
   .cricle{
@@ -170,4 +193,15 @@
 .header .con{
   height: 100%;
 }
+  .first_color{
+    color: black;
+  }
+  .top_con{
+    width: 5.56rem;
+    height: 100%;
+    padding-left: 0.3rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  }
 </style>

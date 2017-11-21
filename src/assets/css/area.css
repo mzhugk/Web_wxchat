@@ -107,3 +107,19 @@
 	color: #333;
 	font-size: 0.32rem;
 }
+.nomore{
+	height: 0.4rem;
+    width: 65%;
+    margin: 0rem auto;
+    margin-top: 0.6rem;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+.nomore>span{
+	color: #999;
+	font-size: 0.28rem;
+	position: relative;
+	top: -0.2rem;
+	background: #fff;
+	padding: 0.1rem;
+}

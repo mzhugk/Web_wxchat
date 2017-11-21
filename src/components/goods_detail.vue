@@ -3,15 +3,15 @@
       <div class="banner">
           <swiper :list="baseList" auto loop  :aspect-ratio="750/750" :show-dots="true" :show-desc-mask="false" ></swiper>
       </div>
-      <div class="product">
+      <div class="product" v-if="pro_data">
           <p class="price"><span>¥ {{real_price}}</span></p>
           <p class="product_title"><span>{{pro_data.product_title}}</span></p>
           <p class="flag"><img :src="pro_data.flag"><span>{{pro_data.product_area}}</span></p>
       </div>
-      <group  label-width="4.5em" label-margin-right="0em">
+      <group  label-width="4.5em" label-margin-right="0em" >
         <cell title="规格" :value="current_sku" is-link value-align="left" @click.native="sku_show()"></cell>
         <x-address title="配送至" v-model="addressValue" raw-value :list="addressData" value-text-align="left" label-align="justify"></x-address>
-        <cell title="运费" :value="pro_data.mod.more_fee"  value-align="left" ></cell>
+        <cell title="运费" :value="pro_data.mod.more_fee"  value-align="left" v-if="pro_data"></cell>
         <cell title="说明" value=""  is-link value-align="left" @click.native="declare_show()"><span v-for="i in other" style="margin-right: 0.1rem;"><span style="color:#FFCC00;margin-right: 0.05rem;">·</span>{{i.name}}</span></cell>
       </group>
     <div class="pro_desc">
@@ -33,7 +33,7 @@
     <!--弹窗sku-->
     <transition name="fadeInUp">
       <div class="con" v-show="spec_show" >
-        <div class="sku">
+        <div class="sku" v-if="pro_data">
             <div class="thumb"><img :src="pro_data.pic[0]"></div>
             <div class="thumb_r">
                 <p class="price"><span>¥ {{current_price}}</span></p>
@@ -70,13 +70,15 @@
       </div>
     </transition>
     <!--Toast组件弹窗-->
-    <toast v-model="isShow" text="添加成功" type="text" :is-show-mask=false position="bottom" width="2rem"></toast>
-    <toast v-model="isNull" text="库存不足" type="text" :is-show-mask=false position="bottom" width="2rem"></toast>
+    <toast v-model="isShow" :text="text" type="text" :is-show-mask=false position="bottom" width="2.6rem" ></toast>
+    <!--<toast v-model="isNull" :text="text" type="text" :is-show-mask=false position="bottom" width="4rem"></toast>-->
   </div>
 </template>
 
 <script>
   import {Swiper,SwiperItem,Group,XAddress,ChinaAddressData,Cell,XNumber,XImg,Toast} from "vux";
+  import api from '../api/api'
+  import api2 from '../api/commInfo'
   import qs from "qs";
   export default {
     name:"goods_detail",
@@ -84,8 +86,9 @@
     data(){
         return {
 //          title:"",
+          text:'',//toast弹窗内容
           isShow:false,
-          isNull:false,
+//          isNull:false,
           count:1,//规格中默认的数量
           X:0,//规格中默认的第一个选项索引
           current_sku:"",//当前选中的规格
@@ -95,7 +98,7 @@
           status:0,//规格弹窗中的确定按钮，0表示确认规格，1表示确认加入购物车，2表示确认购买
           spec_show:false,//是否显示规格弹窗
           explain_show:false,//是否显示说明弹窗
-          pro_data:[],//商品所有的数据
+          pro_data:null,//商品所有的数据
           sku:[],//规格的数据源
           stock:"",//库存
           pro_id:null,//商品id
@@ -105,6 +108,21 @@
           baseList:[],//商品轮播图数据
           list: []//商品详情长图
         }
+    },
+    computed:{
+      token(){
+        const that=this;
+
+        // if(that.$store.getters.token){return that.$store.getters.token}
+        // else
+        if(api2.getCookie('user_token')){return api2.getCookie('user_token')}
+        else {
+          let url=window.location.href;
+          url=url.split('/#/')[1];
+          sessionStorage.setItem('return_url',url);
+          that.$router.push('login');
+        }
+      },
     },
     methods:{
         //规格的弹窗显示
@@ -150,18 +168,25 @@
                   method:"post",
                   data:form_data,
                 }).then(function (res) {
-//                  console.log(res.data);
+                    if(res.data.code==100000){
+                      that.spec_show=false;
+                      that.isShow=true;
+                      that.text="添加成功";
+                    }else{
+                      that.spec_show=false;
+                      that.isShow=true;
+                      that.text=res.data.description;
+                    }
                 }).catch(function (err) {
 
                 });
-                this.spec_show=false;
-//                this.$router.push({path: "area", query: {plan: 11}});
-                this.isShow=true;
+
                 break;
               case 2://确认购买
                     if(this.stock-this.count<0){
                         this.spec_show=false;
-                        this.isNull=true;
+                        this.text="库存不足";
+                        this.isShow=true;
                     }else{
                       this.spec_show=false;
                       this.$router.push({path: "confirmOrder", query: {count: this.count,pro_id:this.pro_id,spec_id:this.spec_id}});
@@ -192,8 +217,8 @@
           this.status=2;
       },
         getpro(){
-//          this.pro_id=window.location.href.split("=")[1];
-          this.pro_id=sessionStorage.getItem("goods_detail");
+          this.pro_id=window.location.href.split("=")[1];
+//          this.pro_id=sessionStorage.getItem("goods_detail");
           let that=this;
           this.$ajax({
             url:"http://www.huijuquanqiu.vip/api/goods/goodsdetail",//商品详情数据
@@ -232,17 +257,17 @@
     },
     created:function () {
       this.getpro();
-      this.$store.dispatch('gettoken');
+//      this.$store.dispatch('gettoken');
     },
-    computed:{
-      token(){
-        const that=this;
-        if(that.$store.getters.token){return this.$store.getters.token}
-        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
-        else {alert('token_error')}
-
-      },
-    },
+//    computed:{
+//      token(){
+//        const that=this;
+//        if(that.$store.getters.token){return this.$store.getters.token}
+//        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
+//        else {alert('token_error')}
+//
+//      },
+//    },
   }
 </script>
 

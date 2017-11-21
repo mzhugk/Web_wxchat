@@ -46,6 +46,7 @@
 
 <script>
   import api from '../api/api'
+  import api2 from '../api/commInfo'
   import { Swipeout, SwipeoutItem, SwipeoutButton } from 'vux'
   export default {
     name: 'cartItem',
@@ -66,11 +67,13 @@
       },
       token(){
         const that=this;
-
-        if(that.$store.getters.token){return this.$store.getters.token}
-        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
-        else {alert('token_error')};
-
+        if(api2.getCookie('user_token')){return api2.getCookie('user_token')}
+        else {
+          let url=window.location.href;
+          url=url.split('/#/')[1];
+          sessionStorage.setItem('return_url',url);
+          that.$router.push('login');
+        };
       },
     },
     watch:{

@@ -120,6 +120,7 @@
 	margin-right: 0.3rem;
 	margin-bottom: 0.3rem;
 	padding: 0 0.1rem;
+	font-size: 0.28rem;
 }
 .sku_button button.active{
 	background-color: #27DABC;
@@ -192,7 +193,9 @@
 	color: #aaa;
 	line-height: 1.3;
 	padding:0.2rem 0;
-	
+}
+.tag_con>span{
+	font-size: 0.24rem;
 }
 .tag_box>div.tag:last-child{
 	border:none;

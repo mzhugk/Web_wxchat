@@ -25,3 +25,49 @@
 	line-height: 1.5;
 	text-indent: 0.5rem;
 }
+
+
+.good{
+	width: 48%;
+	float: left;
+	font-size: 0.26rem;
+	padding: 0.2rem 0;
+	border-bottom: 0.01rem solid #e6e6e6;
+}
+.good:nth-child(even){
+	float: right;
+}
+.good>img{
+	width: 100%;
+}
+.good>p{
+	margin-top: 0.1rem;
+}
+.good .pro_title{
+	font-size: 0.26rem;
+	line-height: 1.5;
+	overflow: hidden;
+	height: 0.8rem;
+	text-align: center;
+}
+.good .price{
+	color: red;
+	text-align: center;
+	font-size: 0.28rem;
+}
+.nomore{
+	height: 0.4rem;
+    width: 65%;
+    margin: 0rem auto;
+    margin-top: 0.6rem;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+.nomore>span{
+	color: #999;
+	font-size: 0.28rem;
+	position: relative;
+	top: -0.2rem;
+	background: #fff;
+	padding: 0.1rem;
+}

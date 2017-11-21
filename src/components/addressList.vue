@@ -6,18 +6,20 @@
       <swipeout >
         <swipeout-item class="address_item" transition-mode="follow" >
           <div slot="right-menu">
-            <swipeout-button background-color="rgba(39, 218, 188, 1)"  @click.native="defBtnClick(item)">设为<br>默认</swipeout-button>
-            <swipeout-button type="warn" @click.native="delBtnClick(item)">删除<br>地址</swipeout-button>
+            <swipeout-button background-color="rgba(39, 218, 188, 1)"  @click.native.stop="defBtnClick(item)">设为<br>默认</swipeout-button>
+            <swipeout-button type="warn" @click.native.stop="delBtnClick(item)">删除<br>地址</swipeout-button>
           </div>
-          <div slot="content" class="item_con" style="font-size: 5px">
+          <div slot="content" class="item_con rt" style="font-size: 5px">
             <img src="../assets/img/selected.png" alt="" v-show="item.is_default==1">
             <img src="../assets/img/unselected.png" alt="" v-show="item.is_default!=1">
             <div class="item_box">
+              <div>
               <div class="shr_name">{{item.shr_name}}</div>
               <div class="shr_phone">{{item.shr_tel}}</div>
               <div class="shr_area">
                 <span v-show="item.is_default==1" style="color: #27dabc;">[默认]</span>
                 {{item.shr_province}}  {{item.shr_city}}  {{item.shr_area}}  {{item.shr_address}}</div>
+              </div>
             </div>
           </div>
         </swipeout-item>
@@ -26,7 +28,7 @@
 
     </div>
     <div v-if="isNull==1">
-      没有数据
+
     </div>
 
 
@@ -37,6 +39,7 @@
 
 <script>
   import api from '../api/api'
+  import api2 from '../api/commInfo'
   import { Swipeout, SwipeoutItem, SwipeoutButton } from 'vux'
   export default {
     name: 'addressList',
@@ -55,12 +58,25 @@
     computed:{
       token(){
         const that=this;
-
-        if(that.$store.getters.token){return this.$store.getters.token}
-        else if(sessionStorage.getItem('token')){return sessionStorage.getItem('token')}
-        else {alert('token_error')};
-
+        if(api2.getCookie('user_token')){return api2.getCookie('user_token')}
+        else {
+          let url=window.location.href;
+          url=url.split('/#/')[1];
+          sessionStorage.setItem('return_url',url);
+          that.$router.push('login');
+        };
       },
+      selFlag(){
+        const that=this;
+        let query=location.href;
+        if(query.split('?')[1]){
+        query=query.split('?')[1];
+
+        return query.split('=')[1]}else {
+          return false
+        }
+
+      }
 
     },
     created:function () {
@@ -99,8 +115,13 @@
         this.$router.push('/addAddress');
       },
       EditAddressData(item){
-        this.$store.dispatch('setEditData',item)
+        if(this.selFlag=='e'){
+        this.$store.dispatch('setEditData',item);
         this.$router.push('/addAddress');
+        }else {
+          this.$store.dispatch('selAddressInfo',item);
+          this.$router.go(-1)
+        }
       },
     }
   }
@@ -157,9 +178,10 @@
 
   }
   .item_box{
-    display: inline-block;
     height: 1.26rem;
     width: 6.05rem;
+    display: flex;
+    align-items: center;
   }
   .shr_name{
     width: 100%;

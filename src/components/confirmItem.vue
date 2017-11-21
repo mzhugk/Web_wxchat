@@ -1,30 +1,47 @@
 <template>
 
-  <div class="orderItem" v-if="orderb.shop">
-    <div class="item_con_box">
-    <div class="shop_name">{{orderb.shop.shop_name}}</div>
-    <div class="line_bot"></div>
-    <div class="goods_box" v-for="(item,index) in goodsData":key="index">
-      <img  :src="item.product_logo" alt="">
-      <div class="content">
-        <div class="product_title">{{item.product_title}}</div>
-        <div class="spec_name_box">
-          <span class="spec_name">{{item.spec_name}}</span>
-          <span class="price" >¥{{item.price}}</span>
+  <div class="orderItem" v-if="goodsData">
+
+    <div class="item_con_box" v-if="!goodsData.carb">
+      <div class="shop_name">{{goodsData.shop_name}}</div>
+      <div class="line_bot"></div>
+      <div class="goods_box">
+        <img  :src="goodsData.product_logo" alt="">
+        <div class="content">
+          <div class="product_title">{{goodsData.product_title}}</div>
+          <div class="spec_name_box">
+            <span class="spec_name">{{goodsData.spec_name}}</span>
+            <span class="price" >¥{{goodsData.price}}</span>
+          </div>
+          <div class="total">x{{goodsData.total}}</div>
         </div>
-        <div class="total">x{{item.total}}</div>
       </div>
     </div>
+
+    <div class="item_con_box" v-if="goodsData.carb">
+      <div class="shop_name">{{orderb.shop.shop_name}}</div>
+      <div class="line_bot"></div>
+      <div class="goods_box" v-for="(item,index) in goodsData.carb":key="index">
+        <img  :src="item.product_logo" alt="">
+        <div class="content">
+          <div class="product_title">{{item.product_title}}</div>
+          <div class="spec_name_box">
+            <span class="spec_name">{{item.spec_name}}</span>
+            <span class="price" >¥{{item.price}}</span>
+          </div>
+          <div class="total">x{{item.total}}</div>
+        </div>
+      </div>
     </div>
     <div style="height: 0.2rem;"></div>
+
 
   </div>
 </template>
 
 <script>
-
   export default {
-    name: 'orderItem',
+    name: 'confireItem',
     data () {
       return {
 
@@ -38,7 +55,7 @@
 //      console.log('aaaa',this.orderb)
     },
     computed:{
-      goodsData(){return this.orderb.orderc},
+      goodsData(){return this.orderb},
     },
     methods: {}
   }
