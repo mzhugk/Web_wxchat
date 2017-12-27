@@ -40,6 +40,7 @@
       XAddress,
     },
     data () {
+
       return {
         addressData: cityList,
         addressValue:[],
@@ -49,12 +50,12 @@
       }
     },
     watch:{
-      editData(){
-//        console.log(1)
-      },deep:true,
-      addressValue(){
-//        console.log(2)
-      },deep:true,
+//      editData(){
+//
+//      },deep:true,
+//      addressValue(){
+//
+//      },deep:true,
     },
     computed:{
       token(){

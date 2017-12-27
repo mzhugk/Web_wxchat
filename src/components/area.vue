@@ -122,11 +122,13 @@
       },
      go(params,goods_detail){//路由跳转
 //          sessionStorage.setItem("goods_detail",params);
-          this.$router.push({path: goods_detail,query:{plan:params}});
+//          this.$router.push({path: goods_detail,query:{plan:params}});
+            this.$router.push({ path: "../"+goods_detail+"/"+params,params: { plan:params}});
         },
       getarea(PageIndex){
-        let plan=window.location.href.split("=")[1];
+//        let plan=window.location.href.split("=")[1];
 //          let plan=sessionStorage.getItem("area");
+        let plan=this.$route.params.plan;
         let that=this;
         this.$ajax({
           url:"http://www.huijuquanqiu.vip/api/Index/cityDetail",
@@ -148,6 +150,12 @@
                 that.scrollerStatus.pullupStatus = 'enabled';
                 that.scrollerStatus.pulldownStatus = 'default';
                 that.noMore=false;
+                if(that.list_total.length==that.count){
+                  setTimeout(function () {
+                    that.scrollerStatus.pullupStatus = 'disabled';
+                    that.noMore=true;
+                  },500);
+                }
               }else{
                 that.list_total=that.list_total.concat(res.data.object[0].data.product);
                 that.scrollerStatus.pullupStatus = 'default';
@@ -155,7 +163,7 @@
                     setTimeout(function () {
                       that.scrollerStatus.pullupStatus = 'disabled';
                       that.noMore=true;
-                    },100);
+                    },500);
                 }
               }
               that.list=that.list_total.slice(0,3);

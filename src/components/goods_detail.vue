@@ -16,7 +16,7 @@
       </group>
     <div class="pro_desc">
         <div v-for="src in list">
-          <x-img  default-src="http://www.huijuquanqiu.vip/wxtest/img_loading.jpg" :src="src" :offset="-100" ></x-img>
+          <x-img  default-src="http://www.huijuquanqiu.vip/webAPP/img_loading.jpg" :src="src" :offset="-100" ></x-img>
         </div>
     </div>
     <div class="buy">
@@ -120,7 +120,7 @@
           let url=window.location.href;
           url=url.split('/#/')[1];
           sessionStorage.setItem('return_url',url);
-          that.$router.push('login');
+          that.$router.push('../login');
         }
       },
     },
@@ -189,7 +189,7 @@
                         this.isShow=true;
                     }else{
                       this.spec_show=false;
-                      this.$router.push({path: "confirmOrder", query: {count: this.count,pro_id:this.pro_id,spec_id:this.spec_id}});
+                      this.$router.push({path: "../confirmOrder", query: {count: this.count,pro_id:this.pro_id,spec_id:this.spec_id}});
                     }
             }
 
@@ -204,7 +204,7 @@
       },
       //前往购物车列表
       cart_list(){
-          this.$router.push("cartList");
+          this.$router.push("../cartList");
       },
       //加入购物车
       add_cart(){
@@ -217,8 +217,9 @@
           this.status=2;
       },
         getpro(){
-          this.pro_id=window.location.href.split("=")[1];
+//          this.pro_id=window.location.href.split("=")[1];
 //          this.pro_id=sessionStorage.getItem("goods_detail");
+          this.pro_id=this.$route.params.plan;
           let that=this;
           this.$ajax({
             url:"http://www.huijuquanqiu.vip/api/goods/goodsdetail",//商品详情数据

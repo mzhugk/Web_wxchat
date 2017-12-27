@@ -36,7 +36,9 @@
       go(params,name,area_goods){//路由跳转
 //        sessionStorage.setItem("area_goods",params);
 //        sessionStorage.setItem("area_name",name);
-        this.$router.push({path: area_goods,query: { plan:params,name:name}});
+//        this.$router.push({path: area_goods,query: { plan:params,name:name}});
+          this.$router.push({path: area_goods+"/"+name+"/"+params,params: { plan:params,name:name}});
+
       },
         getarea(){
           let that=this;

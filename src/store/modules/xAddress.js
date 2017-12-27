@@ -7,7 +7,8 @@ const state = {
   addressdata:'',
   editdata:false,
   selFlag:false,
-  selAddressInfo:''
+  selAddressInfo:'',
+  editedFlag:false,
 };
 
 
@@ -26,6 +27,10 @@ const actions =  {
   setSelFlag({commit},data){
     // "use strict";
     commit(types.SEL_FLAG,data)
+  },
+  setEditedFlag({commit},data){
+    // "use strict";
+    commit(types.EDITED_FLAG,data)
   },
   selAddressInfo({commit},data){
     // "use strict";
@@ -47,6 +52,10 @@ const mutations = {
 
     state.selFlag = res
   },
+  [types.EDITED_FLAG](state,res){
+
+    state.editedFlag = res
+  },
   [types.SEL_ADDRESS_INFO](state,res){
 
     state.selAddressInfo = res
@@ -58,6 +67,7 @@ const getters = {
     getAddress:state => state.addressdata,
     getEditData:state => state.editdata,
     getSelFlag:state => state.selFlag,
+    getEditedFlag:state => state.editedFlag,
     getSelAddressInfo:state => state.selAddressInfo,
   };
 

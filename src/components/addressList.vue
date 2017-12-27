@@ -119,6 +119,7 @@
         this.$store.dispatch('setEditData',item);
         this.$router.push('/addAddress');
         }else {
+          this.$store.dispatch('setEditedFlag',true);
           this.$store.dispatch('selAddressInfo',item);
           this.$router.go(-1)
         }

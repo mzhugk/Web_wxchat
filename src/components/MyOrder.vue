@@ -22,7 +22,7 @@
 
         <div style="height: 0.3rem" v-if="!listIsNull"></div>
         <div style="width: 100%;height: 100%" v-if="listIsNull" >
-          <div style="width: 40%;margin: auto">
+          <div style="width: 50%;margin:1.6rem auto 0rem" >
           <img style="width: 100%;" src="../assets/img/order_none.png" alt="">
             <div style="width: 100%;text-align: center">您暂时没有订单</div>
           </div>

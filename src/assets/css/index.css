@@ -142,7 +142,7 @@
 .box1 {
   height: 5rem;
   position: relative;
-  width: 18.8rem;
+  /*width: 9.3rem;*/
 }
 .box1-item {
   width: 3rem;
@@ -157,6 +157,7 @@
 .box1-item img{
   width: 100%;
 }
+
 .sub-price,.sub-title{
   margin-top: 0.1rem;
   font-size:0.28rem;

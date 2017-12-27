@@ -1,7 +1,7 @@
 <template>
   <div class="person" v-title data-title="个人中心">
     <div class="logo_box">
-      <img :src="personData.icon" alt="">
+      <img :src="personData.icon" default-src="http://www.huijuquanqiu.vip/webAPP/img_loading.jpg">
       <div class="name_box rt">
         <div class="name_info">
           <div class="name">{{personData.nickname}}</div>
@@ -45,17 +45,17 @@
     data () {
       return {
         personData:'',
-        orderData:[['待收货','http://www.huijuquanqiu.vip/wxtest/img/mine_receive.png'],
-          ['待发货','http://www.huijuquanqiu.vip/wxtest/img/mine_send.png'],
-          ['待付款','http://www.huijuquanqiu.vip/wxtest/img/mine_pay.png'],
-          ['全部订单','http://www.huijuquanqiu.vip/wxtest/img/mine_order.png']],
-        boxData:[['购物车','http://www.huijuquanqiu.vip/wxtest/img/mine_shopping_cart.png'],
-          ['礼券兑换','http://www.huijuquanqiu.vip/wxtest/img/mine_shopping_cart.png'],
-          ['我的礼券','http://www.huijuquanqiu.vip/wxtest/img/mine_my_coupon.png'],
-          ['售后服务','http://www.huijuquanqiu.vip/wxtest/img/mine_after_sale.png'],
-          ['收货地址','http://www.huijuquanqiu.vip/wxtest/img/mine_address.png'],
-          ['常见问题','http://www.huijuquanqiu.vip/wxtest/img/mine_question.png'],
-          ['联系客服','http://www.huijuquanqiu.vip/wxtest/img/mine_service.png'],
+        orderData:[['待收货','http://www.huijuquanqiu.vip/webAPP/img/mine_receive.png'],
+          ['待发货','http://www.huijuquanqiu.vip/webAPP/img/mine_send.png'],
+          ['待付款','http://www.huijuquanqiu.vip/webAPP/img/mine_pay.png'],
+          ['全部订单','http://www.huijuquanqiu.vip/webAPP/img/mine_order.png']],
+        boxData:[['购物车','http://www.huijuquanqiu.vip/webAPP/img/mine_shopping_cart.png'],
+          ['礼券兑换','http://www.huijuquanqiu.vip/webAPP/img/mine_shopping_cart.png'],
+          ['我的礼券','http://www.huijuquanqiu.vip/webAPP/img/mine_my_coupon.png'],
+          ['售后服务','http://www.huijuquanqiu.vip/webAPP/img/mine_after_sale.png'],
+          ['收货地址','http://www.huijuquanqiu.vip/webAPP/img/mine_address.png'],
+          ['常见问题','http://www.huijuquanqiu.vip/webAPP/img/mine_question.png'],
+          ['联系客服','http://www.huijuquanqiu.vip/webAPP/img/mine_service.png'],
           '',''],
       }
     },
@@ -99,19 +99,22 @@
             that.$router.push('cartlist');
             break;
           case 1:
-              window.location.href="http://www.huijuquanqiu.vip/active/mobile/exchange.html";
-              break;
+            window.location.href="http://www.huijuquanqiu.vip/active/mobile/exchange.html";
+            break;
           case 2:
-              window.location.href="http://www.huijuquanqiu.vip/active/mobile/pick_up.html";
-              break;
+            window.location.href="http://www.huijuquanqiu.vip/active/mobile/pick_up.html";
+            break;
+          case 3:
+            window.location.href = 'tel://' + '057186221580';
+            break;
           case 4:
             that.$router.push('addresslist?type=e');
             break;
           case 5:
-              window.location.href='http://www.huijuquanqiu.vip/H5/usual_question.html';
+            window.location.href='http://www.huijuquanqiu.vip/H5/usual_question.html';
             break;
           case 6:
-              window.location.href = 'tel://' + '057186221580';
+            window.location.href = 'tel://' + '057186221580';
             break;
         }
       }
@@ -131,7 +134,7 @@
   height: 2.4rem;
   padding: 0.5rem 0.6rem;
   box-sizing: border-box;
-  background: url("http://www.huijuquanqiu.vip/wxtest/img/headlogobg.png") ;
+  background: url("http://www.huijuquanqiu.vip/webAPP/img/headlogobg.png") ;
   background-size: 100% 100%;
 }
   .logo_box img{
@@ -158,6 +161,7 @@
   .order_list{
     width: 100%;
     height: 1.68rem;
+    font-size: 0.3rem;
     background-color: white;
   }
   .order_item{
@@ -170,6 +174,7 @@
   .box_list{
     width: 100%;
     height: 5.4rem;
+    font-size: 0.3rem;
     background-color: white;
     border-top: 1px solid rgba(230, 230, 230, 1);
     box-sizing: border-box;
@@ -197,7 +202,7 @@
     border-bottom: 1px solid rgba(230, 230, 230, 1);
   }
   .item_logo{
-    width: 0.4rem;display: block;margin: auto;padding-bottom: 0.26rem;box-sizing: border-box;
+    height: 0.7rem;display: block;margin: auto;padding-bottom: 0.26rem;box-sizing: border-box;
   }
   img[src=""],img:not([src]){
     opacity:0;

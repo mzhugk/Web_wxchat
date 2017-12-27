@@ -107,7 +107,8 @@
         if(that.$store.getters.getSelAddressInfo){
           let seldata=this.$store.getters.getSelAddressInfo;
           return seldata}
-      }
+      },
+      editedFlag(){return this.$store.getters.getEditedFlag},
     },
     methods: {
       initData(){
@@ -116,8 +117,12 @@
         api.confirmOrder(that.token,that.count,that.pro_id,that.spec_id,function (res) {
 
           that.orderb=res.data.object[0];
+          if(!that.editedFlag){
           that.$store.dispatch('selAddressInfo',that.orderb.address);
-          console.log(that.orderb)
+          }else {
+            that.$store.dispatch('setEditedFlag',false);
+          }
+
         })
       },
       creatOrder(){

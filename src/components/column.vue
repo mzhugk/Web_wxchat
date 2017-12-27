@@ -90,6 +90,11 @@
       },
     },
     methods:{
+      go(params,goods_detail){//路由跳转
+//      sessionStorage.setItem("goods_detail",params);
+//      this.$router.push({path: goods_detail,query:{plan:params}});
+        this.$router.push({ path: "../"+goods_detail+"/"+params,params: { plan:params}});
+      },
       selPullUp(){
         console.log("上拉");
         if (this.obj_product.length < this.count) {
@@ -103,8 +108,9 @@
         this.getcolumn(this.PageIndex);
       },
       getcolumn(PageIndex){
-          let plan=window.location.href.split("=")[1];
+//          let plan=window.location.href.split("=")[1];
 //        let plan=sessionStorage.getItem("column");
+        let plan=this.$route.params.plan;
           let that=this;
           this.$ajax({
             url:"http://www.huijuquanqiu.vip/api/Index/theme_detail",
@@ -125,6 +131,13 @@
                       that.scrollerStatus.pullupStatus = 'enabled';
                       that.scrollerStatus.pulldownStatus = 'default';
                       that.noMore=false;
+                      if(that.obj_product.length==that.count){
+                        setTimeout(function () {
+                          that.scrollerStatus.pullupStatus = 'disabled';
+                          that.noMore=true;
+                        },500)
+
+                      }
                   }else{
                     that.obj_product=that.obj_product.concat(res.data.object[0].data.product);
                     that.scrollerStatus.pullupStatus = 'default';

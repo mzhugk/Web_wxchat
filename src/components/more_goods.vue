@@ -102,7 +102,8 @@ export default {
     },
     go(params,goods_detail){//路由跳转
 //      sessionStorage.setItem("goods_detail",params);
-      this.$router.push({path: goods_detail,query:{plan:params}});
+//      this.$router.push({path: goods_detail,query:{plan:params}});
+        this.$router.push({ path: "../../"+goods_detail+"/"+params,params: { plan:params}});
     },
       getmore_goods(){
         this.title="活动商品";
@@ -121,10 +122,12 @@ export default {
         });
       },
       getarea_goods(PageIndex){
-      let plan=window.location.href.split("&")[0].split("=")[1];
-      this.title=decodeURI(window.location.href.split("&")[1].split("=")[1]);//title
+//      let plan=window.location.href.split("&")[0].split("=")[1];
+//      this.title=decodeURI(window.location.href.split("&")[1].split("=")[1]);//title
 //        let plan=sessionStorage.getItem("area_goods");
 //        this.title=decodeURI(sessionStorage.getItem("area_name"));//title
+        let plan=this.$route.params.plan;
+        this.title=this.$route.params.name;
       let that=this;
 
       this.$ajax({//单个地域下产品列表
@@ -144,6 +147,12 @@ export default {
             that.scrollerStatus.pullupStatus = 'enabled';
             that.scrollerStatus.pulldownStatus = 'default';
             that.noMore=false;
+            if(that.goods.length==that.count){
+              setTimeout(function () {
+                that.noMore=true;
+                that.scrollerStatus.pullupStatus = 'disabled';
+              },500);
+            }
           }else{
             that.goods=that.goods.concat(res.data.object[0].data);
             that.scrollerStatus.pullupStatus = 'default';

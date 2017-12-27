@@ -22,5 +22,6 @@ export const ORDER_TYPE = 'ORDER_TYPE';
 export const ADDRESS_DATA = 'ADDRESS_DATA';
 export const EDIT_DATA = 'EDIT_DATA';
 export const SEL_FLAG = 'SEL_FLAG';
+export const EDITED_FLAG = 'EDITED_FLAG';
 
 export const SEL_ADDRESS_INFO = 'SEL_ADDRESS_INFO';
